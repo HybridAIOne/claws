@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plotly Survey Dashboards"
+  short_description: "Build survey dashboards with Plotly"
+  default_prompt: "Use $plotly-survey-dashboarding to turn this survey dataset into a Plotly dashboard spec or code scaffold."

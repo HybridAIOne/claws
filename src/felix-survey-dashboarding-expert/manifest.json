@@ -1,0 +1,17 @@
+{
+  "formatVersion": 1,
+  "name": "Felix",
+  "id": "felix",
+  "description": "Survey dashboarding expert for research, CX, and insights teams with bundled survey design, Tableau, Power BI, Plotly, and D3 skills.",
+  "author": "HybridAI",
+  "version": "1.1.0",
+  "skills": {
+    "bundled": [
+      "d3-survey-dashboarding",
+      "plotly-survey-dashboarding",
+      "powerbi-survey-dashboarding",
+      "survey-design-and-analysis",
+      "tableau-survey-dashboarding"
+    ]
+  }
+}

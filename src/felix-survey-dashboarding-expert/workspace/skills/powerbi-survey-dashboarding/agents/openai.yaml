@@ -1,0 +1,4 @@
+interface:
+  display_name: "Power BI Survey Dashboards"
+  short_description: "Build survey dashboards in Power BI"
+  default_prompt: "Use $powerbi-survey-dashboarding to turn this survey dataset into a Power BI dashboard plan."

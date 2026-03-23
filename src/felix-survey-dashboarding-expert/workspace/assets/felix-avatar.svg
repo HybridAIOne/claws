@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Felix avatar</title>
+  <desc id="desc">A blue dashboard-themed avatar with an F monogram.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eff6ff" />
+      <stop offset="100%" stop-color="#bfdbfe" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)" />
+  <rect x="88" y="92" width="336" height="328" rx="36" fill="white" opacity="0.96" />
+  <rect x="124" y="132" width="264" height="28" rx="14" fill="#dbeafe" />
+  <rect x="124" y="196" width="48" height="152" rx="18" fill="#93c5fd" />
+  <rect x="194" y="248" width="48" height="100" rx="18" fill="#60a5fa" />
+  <rect x="264" y="220" width="48" height="128" rx="18" fill="#3b82f6" />
+  <rect x="334" y="174" width="48" height="174" rx="18" fill="url(#panel)" />
+  <circle cx="384" cy="128" r="24" fill="#2563eb" opacity="0.15" />
+  <path d="M150 408c32-78 90-118 174-118h38" fill="none" stroke="#1d4ed8" stroke-linecap="round" stroke-width="18" />
+  <text x="164" y="286" fill="#0f172a" font-family="Arial, Helvetica, sans-serif" font-size="120" font-weight="700">F</text>
+</svg>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survey Design And Analysis"
+  short_description: "Design surveys and analyze crosstabs"
+  default_prompt: "Use $survey-design-and-analysis to design this survey or analyze the responses before dashboarding."

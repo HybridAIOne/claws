@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tableau Survey Dashboards"
+  short_description: "Build survey dashboards in Tableau"
+  default_prompt: "Use $tableau-survey-dashboarding to turn this survey dataset into a Tableau dashboard plan."

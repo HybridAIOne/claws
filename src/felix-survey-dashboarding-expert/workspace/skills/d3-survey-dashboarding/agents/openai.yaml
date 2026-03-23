@@ -1,0 +1,4 @@
+interface:
+  display_name: "D3 Survey Dashboards"
+  short_description: "Build survey dashboards with D3"
+  default_prompt: "Use $d3-survey-dashboarding to turn this survey dataset into a D3 interaction and chart architecture."
