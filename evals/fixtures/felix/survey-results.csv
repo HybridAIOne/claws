@@ -1,0 +1,5 @@
+segment,responses,nps,support_satisfaction,renewal_risk,top_theme
+Enterprise,42,31,4.2,medium,Implementation pacing
+Mid-market,58,12,3.6,high,Slow response on billing issues
+SMB,76,-8,3.1,high,Confusing self-serve onboarding
+Strategic,14,45,4.6,low,Need clearer executive reporting

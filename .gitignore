@@ -1,2 +1,12 @@
 .DS_Store
 Thumbs.db
+evals/results/
+credentials.json
+codex-auth.json
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+*.pfx

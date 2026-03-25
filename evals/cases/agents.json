@@ -1,0 +1,728 @@
+{
+  "felix": {
+    "tasks": [
+      {
+        "id": "survey_dashboard_brief",
+        "fixtures": [
+          "felix/survey-results.csv",
+          "felix/verbatims.md",
+          "felix/vp-cs-brief.html"
+        ],
+        "artifactPath": "deliverables/evals/dashboard-brief.md",
+        "requiredArtifactStrings": [
+          "Decision",
+          "Recommended Visuals",
+          "Calculations",
+          "QA Risks"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/dashboard-brief.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/survey_dashboard_brief/`: `survey-results.csv`, `verbatims.md`, and `vp-cs-brief.html`. Do not browse or use external data. Create a markdown file at `deliverables/evals/dashboard-brief.md` with these exact section headings: Decision, Recommended Visuals, Calculations, QA Risks. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "segment_score_export",
+        "fixtures": [
+          "felix/survey-results.csv",
+          "felix/verbatims.md"
+        ],
+        "artifactPath": "deliverables/evals/segment-score-export.csv",
+        "requiredCsvHeaders": [
+          "segment",
+          "nps",
+          "support_satisfaction",
+          "primary_risk"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/segment-score-export.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/segment_score_export/`: `survey-results.csv` and `verbatims.md`. Create a CSV file at `deliverables/evals/segment-score-export.csv` with exactly these headers: segment,nps,support_satisfaction,primary_risk. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "qbr_storyboard",
+        "fixtures": [
+          "felix/survey-results.csv",
+          "felix/vp-cs-brief.html"
+        ],
+        "artifactPath": "deliverables/evals/qbr-storyboard.pptx",
+        "responseMustInclude": [
+          "deliverables/evals/qbr-storyboard.pptx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/qbr_storyboard/`: `survey-results.csv` and `vp-cs-brief.html`. Create a concise PowerPoint file at `deliverables/evals/qbr-storyboard.pptx` for a VP of Customer Success with 4 slides covering executive takeaway, segment comparison, root-cause themes, and recommended actions. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "klara-voss": {
+    "tasks": [
+      {
+        "id": "support_triage_record",
+        "fixtures": [
+          "klara-voss/billing-queue.csv",
+          "klara-voss/customer-incident.eml",
+          "klara-voss/refund-policy.md"
+        ],
+        "artifactPath": "deliverables/evals/support-triage.json",
+        "requiredJsonKeys": [
+          "customerReply",
+          "issueClass",
+          "escalationDecision",
+          "internalNote"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/support-triage.json"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/support_triage_record/`: `billing-queue.csv`, `customer-incident.eml`, and `refund-policy.md`. Do not use external systems. Create a JSON file at `deliverables/evals/support-triage.json` with these exact top-level keys: customerReply, issueClass, escalationDecision, internalNote. Do not promise a refund without human approval. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "queue_priority_export",
+        "fixtures": [
+          "klara-voss/billing-queue.csv",
+          "klara-voss/refund-policy.md"
+        ],
+        "artifactPath": "deliverables/evals/queue-priority.csv",
+        "requiredCsvHeaders": [
+          "ticket_id",
+          "priority",
+          "owner",
+          "next_action"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/queue-priority.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/queue_priority_export/`: `billing-queue.csv` and `refund-policy.md`. Create a CSV file at `deliverables/evals/queue-priority.csv` with exactly these headers: ticket_id,priority,owner,next_action. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "customer_followup_email",
+        "fixtures": [
+          "klara-voss/customer-incident.eml",
+          "klara-voss/refund-policy.md"
+        ],
+        "artifactPath": "deliverables/evals/customer-followup.eml",
+        "requiredArtifactStrings": [
+          "Subject:",
+          "INV-2041",
+          "INV-2049",
+          "today"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/customer-followup.eml"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/customer_followup_email/`: `customer-incident.eml` and `refund-policy.md`. Create an email draft file at `deliverables/evals/customer-followup.eml` that acknowledges urgency, confirms review, and avoids promising a refund before approval. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "anika-brandt": {
+    "tasks": [
+      {
+        "id": "sales_outbound_brief",
+        "fixtures": [
+          "anika-brandt/account-research.md",
+          "anika-brandt/crm-export.csv",
+          "anika-brandt/revops-brief.html"
+        ],
+        "artifactPath": "deliverables/evals/outbound-brief.md",
+        "requiredArtifactStrings": [
+          "Account Brief",
+          "Trigger Event",
+          "Email Draft",
+          "CRM Update"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/outbound-brief.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/sales_outbound_brief/`: `account-research.md`, `crm-export.csv`, and `revops-brief.html`. Do not browse the web. Create a markdown file at `deliverables/evals/outbound-brief.md` with these exact section headings: Account Brief, Trigger Event, Email Draft, CRM Update. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "account_plan_export",
+        "fixtures": [
+          "anika-brandt/account-research.md",
+          "anika-brandt/crm-export.csv"
+        ],
+        "artifactPath": "deliverables/evals/account-plan.csv",
+        "requiredCsvHeaders": [
+          "account",
+          "contact_role",
+          "trigger",
+          "relevance",
+          "next_step"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/account-plan.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/account_plan_export/`: `account-research.md` and `crm-export.csv`. Create a CSV file at `deliverables/evals/account-plan.csv` with exactly these headers: account,contact_role,trigger,relevance,next_step. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "prospect_email_draft",
+        "fixtures": [
+          "anika-brandt/account-research.md",
+          "anika-brandt/revops-brief.html"
+        ],
+        "artifactPath": "deliverables/evals/prospect-email.eml",
+        "requiredArtifactStrings": [
+          "Subject:",
+          "Northstar Analytics",
+          "forecast",
+          "EMEA"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/prospect-email.eml"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/prospect_email_draft/`: `account-research.md` and `revops-brief.html`. Create an outbound email draft file at `deliverables/evals/prospect-email.eml`. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "maria-solberg": {
+    "tasks": [
+      {
+        "id": "onboarding_plan_doc",
+        "fixtures": [
+          "maria-solberg/onboarding-handbook.md",
+          "maria-solberg/new-hire-profile.json",
+          "maria-solberg/hybrid-policy.html"
+        ],
+        "artifactPath": "deliverables/evals/onboarding-plan.docx",
+        "responseMustInclude": [
+          "deliverables/evals/onboarding-plan.docx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/onboarding_plan_doc/`: `onboarding-handbook.md`, `new-hire-profile.json`, and `hybrid-policy.html`. Create a Word document at `deliverables/evals/onboarding-plan.docx` with sections for week 1, weeks 2-4, policy notes, and manager message. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "first_month_checklist",
+        "fixtures": [
+          "maria-solberg/onboarding-handbook.md",
+          "maria-solberg/new-hire-profile.json"
+        ],
+        "artifactPath": "deliverables/evals/first-month-checklist.csv",
+        "requiredCsvHeaders": [
+          "week",
+          "owner",
+          "task",
+          "status"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/first-month-checklist.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/first_month_checklist/`: `onboarding-handbook.md` and `new-hire-profile.json`. Create a CSV file at `deliverables/evals/first-month-checklist.csv` with exactly these headers: week,owner,task,status. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "new_hire_calendar_hold",
+        "fixtures": [
+          "maria-solberg/new-hire-profile.json",
+          "maria-solberg/hybrid-policy.html"
+        ],
+        "artifactPath": "deliverables/evals/new-hire-calendar-hold.ics",
+        "requiredArtifactStrings": [
+          "BEGIN:VCALENDAR",
+          "BEGIN:VEVENT",
+          "SUMMARY:"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/new-hire-calendar-hold.ics"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/new_hire_calendar_hold/`: `new-hire-profile.json` and `hybrid-policy.html`. Create a calendar invite file at `deliverables/evals/new-hire-calendar-hold.ics` for a day-one onboarding kickoff. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "taro-weiss": {
+    "tasks": [
+      {
+        "id": "bug_triage_note",
+        "fixtures": [
+          "taro-weiss/bug-report.md",
+          "taro-weiss/failing-test.txt",
+          "taro-weiss/form-state.json"
+        ],
+        "artifactPath": "deliverables/evals/bug-triage.md",
+        "requiredArtifactStrings": [
+          "Repro Summary",
+          "Likely Root Cause",
+          "Minimal Fix",
+          "Verification Plan"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/bug-triage.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/bug_triage_note/`: `bug-report.md`, `failing-test.txt`, and `form-state.json`. Do not modify code. Create a markdown file at `deliverables/evals/bug-triage.md` with these exact section headings: Repro Summary, Likely Root Cause, Minimal Fix, Verification Plan. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "repro_case_json",
+        "fixtures": [
+          "taro-weiss/bug-report.md",
+          "taro-weiss/failing-test.txt"
+        ],
+        "artifactPath": "deliverables/evals/repro-case.json",
+        "requiredJsonKeys": [
+          "title",
+          "stepsToReproduce",
+          "expectedBehavior",
+          "actualBehavior",
+          "severity"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/repro-case.json"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/repro_case_json/`: `bug-report.md` and `failing-test.txt`. Create a JSON file at `deliverables/evals/repro-case.json` with these exact top-level keys: title, stepsToReproduce, expectedBehavior, actualBehavior, severity. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "fix_proposal_diff",
+        "fixtures": [
+          "taro-weiss/bug-report.md",
+          "taro-weiss/failing-test.txt",
+          "taro-weiss/form-state.json"
+        ],
+        "artifactPath": "deliverables/evals/fix-proposal.diff",
+        "requiredArtifactStrings": [
+          "diff --git",
+          "timezone",
+          "Save"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/fix-proposal.diff"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/fix_proposal_diff/`: `bug-report.md`, `failing-test.txt`, and `form-state.json`. Do not edit the repo. Create a proposed patch file at `deliverables/evals/fix-proposal.diff` showing a plausible minimal fix and test adjustment. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "jonas-reiter": {
+    "tasks": [
+      {
+        "id": "meeting_recap",
+        "fixtures": [
+          "jonas-reiter/meeting-notes.md",
+          "jonas-reiter/attendees.csv",
+          "jonas-reiter/followup-context.html"
+        ],
+        "artifactPath": "deliverables/evals/meeting-recap.md",
+        "requiredArtifactStrings": [
+          "Decisions",
+          "Open Questions",
+          "Action Items",
+          "Follow-Up Message"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/meeting-recap.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/meeting_recap/`: `meeting-notes.md`, `attendees.csv`, and `followup-context.html`. Create a markdown file at `deliverables/evals/meeting-recap.md` with these exact section headings: Decisions, Open Questions, Action Items, Follow-Up Message. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "action_register_export",
+        "fixtures": [
+          "jonas-reiter/meeting-notes.md",
+          "jonas-reiter/attendees.csv"
+        ],
+        "artifactPath": "deliverables/evals/action-register.csv",
+        "requiredCsvHeaders": [
+          "owner",
+          "action_item",
+          "due_date",
+          "status"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/action-register.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/action_register_export/`: `meeting-notes.md` and `attendees.csv`. Create a CSV file at `deliverables/evals/action-register.csv` with exactly these headers: owner,action_item,due_date,status. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "followup_hold_invite",
+        "fixtures": [
+          "jonas-reiter/meeting-notes.md",
+          "jonas-reiter/followup-context.html"
+        ],
+        "artifactPath": "deliverables/evals/followup-hold.ics",
+        "requiredArtifactStrings": [
+          "BEGIN:VCALENDAR",
+          "BEGIN:VEVENT",
+          "SUMMARY:"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/followup-hold.ics"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/followup_hold_invite/`: `meeting-notes.md` and `followup-context.html`. Create a calendar hold file at `deliverables/evals/followup-hold.ics` for a stakeholder follow-up sync. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "henrik-falk": {
+    "tasks": [
+      {
+        "id": "variance_workbook",
+        "fixtures": [
+          "henrik-falk/march-finance.csv",
+          "henrik-falk/vat-memo.md",
+          "henrik-falk/cfo-context.html"
+        ],
+        "artifactPath": "deliverables/evals/variance-review.xlsx",
+        "responseMustInclude": [
+          "deliverables/evals/variance-review.xlsx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/variance_workbook/`: `march-finance.csv`, `vat-memo.md`, and `cfo-context.html`. Create an Excel workbook at `deliverables/evals/variance-review.xlsx` with a clean sheet showing budget, actual, and variance values. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "variance_export_csv",
+        "fixtures": [
+          "henrik-falk/march-finance.csv",
+          "henrik-falk/vat-memo.md"
+        ],
+        "artifactPath": "deliverables/evals/variance-export.csv",
+        "requiredCsvHeaders": [
+          "metric",
+          "budget",
+          "actual",
+          "variance"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/variance-export.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/variance_export_csv/`: `march-finance.csv` and `vat-memo.md`. Create a CSV file at `deliverables/evals/variance-export.csv` with exactly these headers: metric,budget,actual,variance. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "variance_review_note",
+        "fixtures": [
+          "henrik-falk/march-finance.csv",
+          "henrik-falk/cfo-context.html"
+        ],
+        "artifactPath": "deliverables/evals/variance-review.md",
+        "requiredArtifactStrings": [
+          "Executive Summary",
+          "Top Variances",
+          "Likely Causes",
+          "Human Handover"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/variance-review.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/variance_review_note/`: `march-finance.csv` and `cfo-context.html`. Create a markdown file at `deliverables/evals/variance-review.md` with these exact section headings: Executive Summary, Top Variances, Likely Causes, Human Handover. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "lena-vogt": {
+    "tasks": [
+      {
+        "id": "vendor_matrix_workbook",
+        "fixtures": [
+          "lena-vogt/vendor-comparison.csv",
+          "lena-vogt/procurement-requirements.md",
+          "lena-vogt/stakeholder-note.html"
+        ],
+        "artifactPath": "deliverables/evals/vendor-shortlist.xlsx",
+        "responseMustInclude": [
+          "deliverables/evals/vendor-shortlist.xlsx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/vendor_matrix_workbook/`: `vendor-comparison.csv`, `procurement-requirements.md`, and `stakeholder-note.html`. Create an Excel workbook at `deliverables/evals/vendor-shortlist.xlsx` with a scored comparison sheet. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "vendor_scorecard_csv",
+        "fixtures": [
+          "lena-vogt/vendor-comparison.csv",
+          "lena-vogt/procurement-requirements.md"
+        ],
+        "artifactPath": "deliverables/evals/vendor-scorecard.csv",
+        "requiredCsvHeaders": [
+          "vendor",
+          "search_quality",
+          "annual_cost",
+          "admin_controls",
+          "recommended_status"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/vendor-scorecard.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/vendor_scorecard_csv/`: `vendor-comparison.csv` and `procurement-requirements.md`. Create a CSV file at `deliverables/evals/vendor-scorecard.csv` with exactly these headers: vendor,search_quality,annual_cost,admin_controls,recommended_status. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "procurement_recommendation_email",
+        "fixtures": [
+          "lena-vogt/vendor-comparison.csv",
+          "lena-vogt/stakeholder-note.html"
+        ],
+        "artifactPath": "deliverables/evals/procurement-recommendation.eml",
+        "requiredArtifactStrings": [
+          "Subject:",
+          "Vendor",
+          "recommend",
+          "next step"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/procurement-recommendation.eml"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/procurement_recommendation_email/`: `vendor-comparison.csv` and `stakeholder-note.html`. Create an email draft at `deliverables/evals/procurement-recommendation.eml` recommending a next step without inventing extra data. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "nora-ebert": {
+    "tasks": [
+      {
+        "id": "contract_issue_memo",
+        "fixtures": [
+          "nora-ebert/contract-snippets.md",
+          "nora-ebert/legal-playbook.html",
+          "nora-ebert/security-addendum-notes.md"
+        ],
+        "artifactPath": "deliverables/evals/contract-review.docx",
+        "responseMustInclude": [
+          "deliverables/evals/contract-review.docx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/contract_issue_memo/`: `contract-snippets.md`, `legal-playbook.html`, and `security-addendum-notes.md`. Create a Word document at `deliverables/evals/contract-review.docx` structured around high severity, medium severity, suggested redlines, and human handover. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "issue_register_json",
+        "fixtures": [
+          "nora-ebert/contract-snippets.md",
+          "nora-ebert/security-addendum-notes.md"
+        ],
+        "artifactPath": "deliverables/evals/issue-register.json",
+        "requiredJsonKeys": [
+          "highSeverity",
+          "mediumSeverity",
+          "suggestedRedlines",
+          "humanHandover"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/issue-register.json"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/issue_register_json/`: `contract-snippets.md` and `security-addendum-notes.md`. Create a JSON file at `deliverables/evals/issue-register.json` with these exact top-level keys: highSeverity, mediumSeverity, suggestedRedlines, humanHandover. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "redline_summary_note",
+        "fixtures": [
+          "nora-ebert/contract-snippets.md",
+          "nora-ebert/legal-playbook.html"
+        ],
+        "artifactPath": "deliverables/evals/contract-review.md",
+        "requiredArtifactStrings": [
+          "High Severity",
+          "Medium Severity",
+          "Suggested Redlines",
+          "Human Handover"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/contract-review.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/redline_summary_note/`: `contract-snippets.md` and `legal-playbook.html`. Create a markdown file at `deliverables/evals/contract-review.md` with these exact section headings: High Severity, Medium Severity, Suggested Redlines, Human Handover. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "felix-hartmann": {
+    "tasks": [
+      {
+        "id": "knowledge_page_html",
+        "fixtures": [
+          "felix-hartmann/ops-sync-notes.md",
+          "felix-hartmann/preview-policy.md",
+          "felix-hartmann/docs-portal.html"
+        ],
+        "artifactPath": "deliverables/evals/kb-update.html",
+        "requiredArtifactStrings": [
+          "Updated Page Draft",
+          "Decision State",
+          "Why It Changed",
+          "Channel Summary"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/kb-update.html"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/knowledge_page_html/`: `ops-sync-notes.md`, `preview-policy.md`, and `docs-portal.html`. Create an HTML file at `deliverables/evals/kb-update.html` with visible headings for Updated Page Draft, Decision State, Why It Changed, and Channel Summary. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "knowledge_change_log",
+        "fixtures": [
+          "felix-hartmann/ops-sync-notes.md",
+          "felix-hartmann/preview-policy.md"
+        ],
+        "artifactPath": "deliverables/evals/change-log.json",
+        "requiredJsonKeys": [
+          "previousPolicy",
+          "newPolicy",
+          "rationale",
+          "channelSummary"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/change-log.json"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/knowledge_change_log/`: `ops-sync-notes.md` and `preview-policy.md`. Create a JSON file at `deliverables/evals/change-log.json` with these exact top-level keys: previousPolicy, newPolicy, rationale, channelSummary. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "release_summary_email",
+        "fixtures": [
+          "felix-hartmann/ops-sync-notes.md",
+          "felix-hartmann/docs-portal.html"
+        ],
+        "artifactPath": "deliverables/evals/release-summary.eml",
+        "requiredArtifactStrings": [
+          "Subject:",
+          "7 days",
+          "QA",
+          "deploy previews"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/release-summary.eml"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/release_summary_email/`: `ops-sync-notes.md` and `docs-portal.html`. Create an email draft at `deliverables/evals/release-summary.eml` explaining the policy change. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "charly-neumann": {
+    "tasks": [
+      {
+        "id": "morning_brief_deck",
+        "fixtures": [
+          "charly-neumann/exec-metrics.csv",
+          "charly-neumann/leadership-brief.md",
+          "charly-neumann/intranet-priorities.html"
+        ],
+        "artifactPath": "deliverables/evals/morning-brief.pptx",
+        "responseMustInclude": [
+          "deliverables/evals/morning-brief.pptx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/morning_brief_deck/`: `exec-metrics.csv`, `leadership-brief.md`, and `intranet-priorities.html`. Create a PowerPoint file at `deliverables/evals/morning-brief.pptx` with slides for top priorities, KPIs, risks, and decision needed. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "kpi_snapshot_export",
+        "fixtures": [
+          "charly-neumann/exec-metrics.csv",
+          "charly-neumann/leadership-brief.md"
+        ],
+        "artifactPath": "deliverables/evals/kpi-snapshot.csv",
+        "requiredCsvHeaders": [
+          "metric",
+          "current_value",
+          "trend",
+          "attention_level"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/kpi-snapshot.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/kpi_snapshot_export/`: `exec-metrics.csv` and `leadership-brief.md`. Create a CSV file at `deliverables/evals/kpi-snapshot.csv` with exactly these headers: metric,current_value,trend,attention_level. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "chief_of_staff_note",
+        "fixtures": [
+          "charly-neumann/exec-metrics.csv",
+          "charly-neumann/intranet-priorities.html"
+        ],
+        "artifactPath": "deliverables/evals/morning-brief.md",
+        "requiredArtifactStrings": [
+          "Top Priorities",
+          "KPIs",
+          "Risks",
+          "Decision Needed"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/morning-brief.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/chief_of_staff_note/`: `exec-metrics.csv` and `intranet-priorities.html`. Create a markdown file at `deliverables/evals/morning-brief.md` with these exact section headings: Top Priorities, KPIs, Risks, Decision Needed. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "lena-adler": {
+    "tasks": [
+      {
+        "id": "market_tracker_workbook",
+        "fixtures": [
+          "lena-adler/competitor-signals.csv",
+          "lena-adler/win-loss-notes.md",
+          "lena-adler/intranet-market-watch.html"
+        ],
+        "artifactPath": "deliverables/evals/market-brief.xlsx",
+        "responseMustInclude": [
+          "deliverables/evals/market-brief.xlsx"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/market_tracker_workbook/`: `competitor-signals.csv`, `win-loss-notes.md`, and `intranet-market-watch.html`. Create an Excel workbook at `deliverables/evals/market-brief.xlsx` with a simple competitor tracker sheet. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "competitor_tracker_csv",
+        "fixtures": [
+          "lena-adler/competitor-signals.csv",
+          "lena-adler/win-loss-notes.md"
+        ],
+        "artifactPath": "deliverables/evals/competitor-tracker.csv",
+        "requiredCsvHeaders": [
+          "competitor",
+          "pricing_move",
+          "gtm_signal",
+          "implication"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/competitor-tracker.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/competitor_tracker_csv/`: `competitor-signals.csv` and `win-loss-notes.md`. Create a CSV file at `deliverables/evals/competitor-tracker.csv` with exactly these headers: competitor,pricing_move,gtm_signal,implication. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "market_brief_note",
+        "fixtures": [
+          "lena-adler/competitor-signals.csv",
+          "lena-adler/intranet-market-watch.html"
+        ],
+        "artifactPath": "deliverables/evals/market-brief.md",
+        "requiredArtifactStrings": [
+          "Observations",
+          "Interpretation",
+          "Competitive Pattern",
+          "Strategic Implication"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/market-brief.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/market_brief_note/`: `competitor-signals.csv` and `intranet-market-watch.html`. Create a markdown file at `deliverables/evals/market-brief.md` with these exact section headings: Observations, Interpretation, Competitive Pattern, Strategic Implication. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  },
+  "mira-demir": {
+    "tasks": [
+      {
+        "id": "sentiment_signal_json",
+        "fixtures": [
+          "mira-demir/review-export.csv",
+          "mira-demir/social-posts.md",
+          "mira-demir/escalation-policy.html"
+        ],
+        "artifactPath": "deliverables/evals/sentiment-report.json",
+        "requiredJsonKeys": [
+          "themeClusters",
+          "trendSignal",
+          "exampleQuotes",
+          "escalationThreshold"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/sentiment-report.json"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/sentiment_signal_json/`: `review-export.csv`, `social-posts.md`, and `escalation-policy.html`. Create a JSON file at `deliverables/evals/sentiment-report.json` with these exact top-level keys: themeClusters, trendSignal, exampleQuotes, escalationThreshold. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "signal_export_csv",
+        "fixtures": [
+          "mira-demir/review-export.csv",
+          "mira-demir/social-posts.md"
+        ],
+        "artifactPath": "deliverables/evals/signal-export.csv",
+        "requiredCsvHeaders": [
+          "source",
+          "volume",
+          "theme",
+          "severity"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/signal-export.csv"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/signal_export_csv/`: `review-export.csv` and `social-posts.md`. Create a CSV file at `deliverables/evals/signal-export.csv` with exactly these headers: source,volume,theme,severity. After writing the file, reply with one short sentence that mentions the file path."
+      },
+      {
+        "id": "sentiment_analysis_note",
+        "fixtures": [
+          "mira-demir/review-export.csv",
+          "mira-demir/escalation-policy.html"
+        ],
+        "artifactPath": "deliverables/evals/sentiment-report.md",
+        "requiredArtifactStrings": [
+          "Theme Clusters",
+          "Trend Signal",
+          "Example Quotes",
+          "Escalation Threshold"
+        ],
+        "responseMustInclude": [
+          "deliverables/evals/sentiment-report.md"
+        ],
+        "prompt": "Use only these local files from `inputs/evals/sentiment_analysis_note/`: `review-export.csv` and `escalation-policy.html`. Create a markdown file at `deliverables/evals/sentiment-report.md` with these exact section headings: Theme Clusters, Trend Signal, Example Quotes, Escalation Threshold. After writing the file, reply with one short sentence that mentions the file path."
+      }
+    ]
+  }
+}

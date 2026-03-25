@@ -1,0 +1,14 @@
+{
+  "beforeSubmit": {
+    "name": "Mila Hartmann",
+    "address": {
+      "street": "Neuer Wall 12",
+      "postalCode": "20457",
+      "country": "DE"
+    }
+  },
+  "afterInvalidCountryRetry": {
+    "name": "Mila Hartmann",
+    "address": {}
+  }
+}

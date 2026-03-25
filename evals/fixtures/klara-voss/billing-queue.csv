@@ -1,0 +1,5 @@
+ticket_id,customer,arr_eur,issue,days_open,current_owner,last_touch
+BQ-1048,Northgrid GmbH,82000,Duplicate invoice after seat downgrade,2,Finance Ops,2026-03-24
+BQ-1052,Velaro Systems,145000,Credit note missing for annual prepay,4,Shared Inbox,2026-03-22
+BQ-1057,Juniper Labs,38000,Refund request after accidental double payment,1,Support Tier 1,2026-03-25
+BQ-1061,Aster Retail,91000,Payment failed and account partially suspended,3,Support Tier 2,2026-03-23

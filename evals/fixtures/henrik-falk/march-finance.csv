@@ -1,0 +1,5 @@
+metric,budget,actual,notes
+Net Revenue,1250000,1184000,Deal timing slipped in DACH
+Gross Margin,71,68.5,Higher support load and hosting overage
+Opex,540000,562000,Contractor spend pulled forward
+VAT Recoverable,92000,74000,Two invoices missing valid VAT IDs

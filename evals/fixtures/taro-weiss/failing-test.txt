@@ -1,0 +1,12 @@
+FAIL settings/profile/form-state.spec.ts
+  preserves nested address state on retry
+
+Expected:
+  address.street = "Neuer Wall 12"
+  address.postalCode = "20457"
+
+Received:
+  address = {}
+
+Stack:
+  at retry submit in settings/profile/form-state.spec.ts:48

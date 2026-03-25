@@ -38,7 +38,7 @@ This zips each subdirectory in `src/` and writes `<dirname>.claw` to `dist/`.
 
 ## Installing a Claw
 
-Download or clone this repo, then unpack a `.claw` file into your HybridClaw
+Download or clone this repo, then install a `.claw` file into your HybridClaw
 instance:
 
 ```bash
@@ -46,7 +46,7 @@ instance:
 hybridclaw agent inspect dist/felix-survey-dashboarding-expert.claw
 
 # Install it
-hybridclaw agent unpack dist/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install dist/felix-survey-dashboarding-expert.claw \
   --id felix --yes
 ```
 
@@ -58,7 +58,7 @@ gh release download v1.0.0 \
   --pattern '*.claw' \
   --dir /tmp/claws
 
-hybridclaw agent unpack /tmp/claws/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install /tmp/claws/felix-survey-dashboarding-expert.claw \
   --id felix --yes
 ```
 
@@ -86,7 +86,7 @@ git pull
 ./build.sh
 
 # Re-install with --force to replace the existing workspace
-hybridclaw agent unpack dist/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install dist/felix-survey-dashboarding-expert.claw \
   --id felix --force --yes
 ```
 
@@ -135,7 +135,17 @@ Quick steps:
 
    ```bash
    hybridclaw agent inspect dist/my-agent.claw
-   hybridclaw agent unpack dist/my-agent.claw --id my-agent --yes
+   hybridclaw agent install dist/my-agent.claw --id my-agent --yes
    ```
 
 5. Commit both `src/my-agent/` and `dist/my-agent.claw`, then open a PR.
+
+## Evals
+
+Runtime-backed evals live under [evals/README.md](/Users/bkoehler/src/claws/evals/README.md).
+
+Example:
+
+```bash
+node evals/run-claw-eval.mjs klara-voss
+```
