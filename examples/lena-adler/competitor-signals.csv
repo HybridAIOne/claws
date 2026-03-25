@@ -1,0 +1,11 @@
+competitor,segment,region,pricing_move,gtm_signal,evidence,source_date,confidence
+VectorDesk,Mid-market,EMEA,"Launched a new Pro bundle at 12% below current list","Expanded channel partner coverage in Benelux","Partner directory added two new resellers; pricing page now shows annual prepay discount",2026-03-18,high
+NorthIndex,Enterprise,Global,"Raised implementation fee from 8k to 15k","Pushing security certifications in outbound","Sales deck now leads with ISO and SOC 2 badges; procurement FAQ added",2026-03-20,high
+SignalStack,Enterprise,DACH,"Extended free migration services by 60 days","Hiring three enterprise AEs in Munich and Berlin","LinkedIn jobs posted; migration landing page now highlights white-glove onboarding",2026-03-22,medium
+PulseForge,SMB,North America,"Introduced usage caps on the starter tier","Started bundling analytics add-on into annual plans","Pricing page shows capped events per month; add-on listed as 'most popular'",2026-03-23,high
+AtlasLoop,Mid-market,UK,"Cut seat minimum from 25 to 10","Testing self-serve checkout for smaller teams","Checkout path now accepts card payment without sales contact; minimums lowered on the pricing page",2026-03-24,medium
+CloudHarbor,Enterprise,APAC,"Added a premium support surcharge","Running region-specific webinars for regulated buyers","Webinar landing pages mention local compliance and named support managers",2026-03-25,medium
+BrightRail,Mid-market,US,"Kept base price flat but increased onboarding fee","Repositioning around faster time-to-value","Case study headlines emphasize launch speed; onboarding fee now separated from subscription",2026-03-25,high
+NorthPeak,Enterprise,Global,"Discounted multi-year contracts by 18%","Publishing ROI calculators for CFO buyers","ROI calculator added to site; annual contract language now emphasizes budget predictability",2026-03-26,high
+OrbitGrid,SMB,EMEA,"Added a new team tier between starter and pro","Offering live chat support in product","Pricing page shows a three-tier ladder; support widget now open during EU business hours",2026-03-26,medium
+MarketPulse,Enterprise,Global,"Introduced an AI add-on priced separately from core seats","Lead generation ads now target ops leaders","Ad copy shifted from 'all-in-one' to 'AI workflow layer'; add-on appears in checkout",2026-03-27,high

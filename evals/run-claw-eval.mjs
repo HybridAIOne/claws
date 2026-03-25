@@ -884,7 +884,16 @@ async function main() {
     assertCommandOk('hybridclaw agent inspect', inspectResult);
     health.inspect.success = true;
 
-    const installArgs = ['agent', 'install', target.packagePath, '--id', evalAgentId, '--force', '--yes'];
+    const installArgs = [
+      'agent',
+      'install',
+      target.packagePath,
+      '--id',
+      evalAgentId,
+      '--force',
+      '--yes',
+      '--skip-skill-scan',
+    ];
     if (options.skipExternals) {
       installArgs.push('--skip-externals');
     }
