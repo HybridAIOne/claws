@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Jonas Reiter",
+  "id": "jonas-reiter",
+  "description": "Meeting Intelligence Coordinator for structured summaries, explicit action items, and reliable follow-through after meetings.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/native-linear"
+      },
+      {
+        "source": "clawhub/gog"
+      }
+    ]
+  }
+}

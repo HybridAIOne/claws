@@ -6,6 +6,12 @@ A `.claw` file is a ZIP archive containing a `manifest.json` and a `workspace/`
 directory with the files that define an agent's identity, personality, skills,
 and configuration.
 
+For the current canonical `.claw` format definition, archive layout, manifest
+schema, and CLI behavior, refer to the official HybridClaw documentation:
+<https://www.hybridclaw.io/development/extensibility/agent-packages.md>. Treat
+this file as a local quick-start guide and the docs page as the source of
+truth when they differ.
+
 ## Workspace Structure
 
 Every claw source directory follows this layout:
@@ -229,7 +235,7 @@ This zips each `src/<name>/` directory into `dist/<name>.claw`.
 If you already have a running agent, you can export it directly:
 
 ```bash
-hybridclaw agent pack my-agent -o my-agent.claw \
+hybridclaw agent export my-agent -o my-agent.claw \
   --skills all --plugins active \
   --description "My agent" --author "Name" --version "1.0.0"
 ```
@@ -283,4 +289,4 @@ rejected.
 - [ ] `workspace/.hybridclaw/policy.yaml` with approval policies
 - [ ] Skills listed in `manifest.skills.bundled` match `workspace/skills/` dirs
 - [ ] `hybridclaw agent inspect` passes
-- [ ] Test install with `hybridclaw agent unpack --id test-agent`
+- [ ] Test install with `hybridclaw agent install dist/my-agent.claw --id test-agent`

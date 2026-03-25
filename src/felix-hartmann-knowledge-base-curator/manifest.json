@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Felix Hartmann",
+  "id": "felix-hartmann",
+  "description": "Knowledge Base Curator for structured documentation updates, decision capture, and low-friction internal knowledge maintenance.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/native-linear"
+      }
+    ]
+  }
+}

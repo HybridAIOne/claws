@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "name": "Lena Vogt",
+  "id": "lena-vogt",
+  "description": "Procurement & Vendor Research Lead for vendor evaluation, shortlist design, and criteria-driven procurement research.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/playwright-npx"
+      },
+      {
+        "source": "clawhub/self-integration"
+      }
+    ]
+  }
+}

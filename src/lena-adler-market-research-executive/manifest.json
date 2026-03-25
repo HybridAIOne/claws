@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "name": "Lena Adler",
+  "id": "lena-adler",
+  "description": "Market Research Executive for competitor analysis, pricing and positioning synthesis, and market-monitoring briefings.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/playwright-npx"
+      },
+      {
+        "source": "clawhub/desearch-x-search"
+      }
+    ]
+  }
+}

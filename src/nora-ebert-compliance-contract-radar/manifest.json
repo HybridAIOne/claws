@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Nora Ebert",
+  "id": "nora-ebert",
+  "description": "Compliance & Contract Radar for policy-first contract review, redline guidance, and early risk identification.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/arc-trust-verifier"
+      }
+    ]
+  }
+}

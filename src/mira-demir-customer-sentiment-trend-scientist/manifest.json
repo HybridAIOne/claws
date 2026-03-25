@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Mira Demir",
+  "id": "mira-demir",
+  "description": "Customer Sentiment & Trend Scientist for signal clustering, trend monitoring, and evidence-based escalation of customer sentiment shifts.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/desearch-x-search"
+      },
+      {
+        "source": "clawhub/x-actionbook-recap"
+      }
+    ]
+  }
+}

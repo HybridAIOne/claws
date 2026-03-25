@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Klara Voss",
+  "id": "klara-voss",
+  "description": "Customer Operations Lead for multi-channel support triage, context-aware responses, and disciplined escalation routing.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/native-linear"
+      }
+    ]
+  }
+}

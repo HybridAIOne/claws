@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "name": "Anika Brandt",
+  "id": "anika-brandt",
+  "description": "Sales Intelligence Partner for trigger-based prospect research, credible personalization, and CRM-ready outbound prep.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/playwright-npx"
+      },
+      {
+        "source": "clawhub/self-integration"
+      }
+    ]
+  }
+}

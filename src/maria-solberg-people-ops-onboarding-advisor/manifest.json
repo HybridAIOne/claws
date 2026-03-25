@@ -1,0 +1,18 @@
+{
+  "formatVersion": 1,
+  "name": "Maria Solberg",
+  "id": "maria-solberg",
+  "description": "People Ops Onboarding Advisor for first-month guidance, policy translation, and structured onboarding coordination.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/gcal-pro"
+      }
+    ]
+  }
+}

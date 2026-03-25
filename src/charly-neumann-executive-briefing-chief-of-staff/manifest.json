@@ -1,0 +1,24 @@
+{
+  "formatVersion": 1,
+  "name": "Charly Neumann",
+  "id": "charly-neumann",
+  "description": "Executive Briefing Chief of Staff for concise leadership briefings, source-backed summaries, and proactive decision support.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/desearch-x-search"
+      },
+      {
+        "source": "clawhub/x-actionbook-recap"
+      },
+      {
+        "source": "clawhub/self-integration"
+      }
+    ]
+  }
+}

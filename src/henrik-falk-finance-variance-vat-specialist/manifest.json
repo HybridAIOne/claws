@@ -1,0 +1,21 @@
+{
+  "formatVersion": 1,
+  "name": "Henrik Falk",
+  "id": "henrik-falk",
+  "description": "Finance Variance & VAT Specialist for audit-ready reporting, anomaly detection, and cross-border finance analysis.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/bookkeeper"
+      },
+      {
+        "source": "clawhub/arc-trust-verifier"
+      }
+    ]
+  }
+}
