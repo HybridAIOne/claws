@@ -13,5 +13,35 @@
       "survey-design-and-analysis",
       "tableau-survey-dashboarding"
     ]
+  },
+  "presentation": {
+    "displayName": "Felix",
+    "role": "Survey Dashboarding Expert",
+    "imageAsset": "agent3.jpg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Transforms survey data into interactive dashboards and visual stories. Felix designs clarity from complexity — turning thousands of responses into decisive, presentation-ready insights.",
+    "skillTags": [
+      {
+        "label": "Survey Design",
+        "icon": "📋"
+      },
+      {
+        "label": "Dashboard Building",
+        "icon": "📊"
+      },
+      {
+        "label": "Cross-Tabulation",
+        "icon": "🔍"
+      },
+      {
+        "label": "Trend Tracking",
+        "icon": "📈"
+      },
+      {
+        "label": "Data Visualization",
+        "icon": "🎨"
+      }
+    ]
   }
 }

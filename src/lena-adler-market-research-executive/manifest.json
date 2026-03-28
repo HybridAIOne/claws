@@ -17,5 +17,35 @@
         "source": "clawhub/desearch-x-search"
       }
     ]
+  },
+  "presentation": {
+    "displayName": "Lena",
+    "role": "Market-Research Executive",
+    "imageAsset": "agent6.jpg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Synthesizes competitive intelligence, market sizing, and trend analysis into executive-ready briefs. Lena distills weeks of research into decisive strategy recommendations.",
+    "skillTags": [
+      {
+        "label": "Competitive Analysis",
+        "icon": "🔬"
+      },
+      {
+        "label": "Market Sizing",
+        "icon": "📐"
+      },
+      {
+        "label": "Trend Reports",
+        "icon": "📰"
+      },
+      {
+        "label": "Strategy Briefs",
+        "icon": "🧭"
+      },
+      {
+        "label": "Opportunity Mapping",
+        "icon": "💡"
+      }
+    ]
   }
 }

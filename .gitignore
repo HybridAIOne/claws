@@ -10,3 +10,5 @@ codex-auth.json
 *.key
 *.p12
 *.pfx
+__pycache__/
+*.py[cod]

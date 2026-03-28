@@ -14,5 +14,35 @@
         "source": "clawhub/x-actionbook-recap"
       }
     ]
+  },
+  "presentation": {
+    "displayName": "Mira",
+    "role": "Consumer Data Scientist",
+    "imageAsset": "agent2.jpg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Specializes in consumer behavior modeling, segmentation, and predictive analytics. Mira turns purchase data and demographics into precise customer profiles and growth strategies.",
+    "skillTags": [
+      {
+        "label": "Customer Segmentation",
+        "icon": "🎯"
+      },
+      {
+        "label": "Predictive Modeling",
+        "icon": "📈"
+      },
+      {
+        "label": "Cohort Analysis",
+        "icon": "🧬"
+      },
+      {
+        "label": "Purchase Analytics",
+        "icon": "🛒"
+      },
+      {
+        "label": "Churn Prediction",
+        "icon": "📉"
+      }
+    ]
   }
 }
