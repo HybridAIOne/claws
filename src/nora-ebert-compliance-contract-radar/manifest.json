@@ -1,8 +1,8 @@
 {
   "formatVersion": 1,
-  "name": "Nora Ebert",
-  "id": "nora-ebert",
-  "description": "Compliance & Contract Radar for policy-first contract review, redline guidance, and early risk identification.",
+  "name": "Nora",
+  "id": "nora",
+  "description": "Monitors your competitive landscape around the clock. Nora tracks competitor moves, pricing changes, product launches, and market positioning — and proactively alerts you when something shifts.",
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
