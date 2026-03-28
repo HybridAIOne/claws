@@ -23,6 +23,7 @@ my-agent/
     IDENTITY.md                  # Who the agent is
     SOUL.md                      # Personality, values, and rules
     AGENTS.md                    # Workspace conventions and guidelines
+    BOOTSTRAP.md                 # One-time first-run onboarding / hatching
     BOOT.md                      # Startup instructions
     MEMORY.md                    # Persistent memory structure
     TOOLS.md                     # Local infrastructure notes
@@ -143,6 +144,22 @@ Workspace-level rules and conventions. Covers things like:
 - How to handle memory updates.
 - Safety guidelines and boundaries.
 - How to interact with tools and external systems.
+
+### BOOTSTRAP.md
+
+One-time onboarding instructions that run on the agent's first launch. Use this
+to make the agent introduce itself, ask a small set of onboarding questions
+about the user, write the answers into `USER.md` / `MEMORY.md`, and then delete
+the file so it does not run again.
+
+Recommended onboarding questions:
+
+- what the user should be called
+- their role or team
+- their main goals or recurring use cases for the persona
+- preferred tone / output style
+- relevant tools, systems, or data sources
+- timezone or working cadence
 
 ### BOOT.md
 
@@ -282,6 +299,7 @@ rejected.
 - [ ] `workspace/IDENTITY.md` with name, creature, vibe, emoji
 - [ ] `workspace/SOUL.md` with personality, core truths, rules, voice
 - [ ] `workspace/AGENTS.md` with workspace conventions
+- [ ] `workspace/BOOTSTRAP.md` with first-run onboarding instructions
 - [ ] `workspace/BOOT.md` with startup instructions
 - [ ] `workspace/MEMORY.md` with memory structure
 - [ ] `workspace/TOOLS.md` with infrastructure notes

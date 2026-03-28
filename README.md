@@ -6,14 +6,14 @@ Pre-built `.claw` agent packages for [HybridClaw](https://github.com/HybridAIOne
 
 ```
 src/                          # Source directories (one per agent)
-  felix-survey-dashboarding-expert/
+  felix/
     workspace/
       IDENTITY.md
       SOUL.md
       AGENTS.md
       ...
 dist/                         # Compiled .claw files (zip archives)
-  felix-survey-dashboarding-expert.claw
+  felix.claw
 build.sh                      # Build script: src/ -> dist/
 ```
 
@@ -43,10 +43,10 @@ instance:
 
 ```bash
 # Inspect the package first
-hybridclaw agent inspect dist/felix-survey-dashboarding-expert.claw
+hybridclaw agent inspect dist/felix.claw
 
 # Install it
-hybridclaw agent install dist/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install dist/felix.claw \
   --id felix --yes
 ```
 
@@ -58,7 +58,7 @@ gh release download v1.0.0 \
   --pattern '*.claw' \
   --dir /tmp/claws
 
-hybridclaw agent install /tmp/claws/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install /tmp/claws/felix.claw \
   --id felix --yes
 ```
 
@@ -86,7 +86,7 @@ git pull
 ./build.sh
 
 # Re-install with --force to replace the existing workspace
-hybridclaw agent install dist/felix-survey-dashboarding-expert.claw \
+hybridclaw agent install dist/felix.claw \
   --id felix --force --yes
 ```
 

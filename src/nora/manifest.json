@@ -1,0 +1,54 @@
+{
+  "formatVersion": 1,
+  "name": "Nora",
+  "id": "nora",
+  "description": "Monitors your competitive landscape around the clock. Nora tracks competitor moves, pricing changes, product launches, and market positioning — and proactively alerts you when something shifts.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/playwright-npx"
+      },
+      {
+        "source": "clawhub/desearch-x-search"
+      },
+      {
+        "source": "clawhub/x-actionbook-recap"
+      }
+    ]
+  },
+  "presentation": {
+    "displayName": "Nora",
+    "role": "Competition Observer",
+    "imageAsset": "assets/agent7.jpg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Monitors your competitive landscape around the clock. Nora tracks competitor moves, pricing changes, product launches, and market positioning — and proactively alerts you when something shifts.",
+    "skillTags": [
+      {
+        "label": "Competitor Tracking",
+        "icon": "👁️"
+      },
+      {
+        "label": "Price Monitoring",
+        "icon": "💰"
+      },
+      {
+        "label": "Launch Alerts",
+        "icon": "📢"
+      },
+      {
+        "label": "Market Positioning",
+        "icon": "📊"
+      },
+      {
+        "label": "News Scanning",
+        "icon": "📰"
+      }
+    ]
+  }
+}

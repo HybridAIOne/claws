@@ -8,7 +8,7 @@ normal work setting.
 Install and switch:
 
 ```bash
-hybridclaw agent install dist/lena-adler-market-research-executive.claw --id lena --yes
+hybridclaw agent install dist/lena.claw --id lena --yes
 /agent switch lena
 /agent info
 ```

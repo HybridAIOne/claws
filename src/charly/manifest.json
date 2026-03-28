@@ -1,0 +1,54 @@
+{
+  "formatVersion": 1,
+  "name": "Charly",
+  "id": "charly",
+  "description": "Specialist for Generative Engine Optimization — the next evolution of SEO, focused on AI search engines. Charly optimizes your content and brand presence for ChatGPT, Perplexity, and other AI-powered discovery platforms.",
+  "author": "HybridAI",
+  "version": "1.0.0",
+  "skills": {
+    "imports": [
+      {
+        "source": "clawhub/gog"
+      },
+      {
+        "source": "clawhub/desearch-x-search"
+      },
+      {
+        "source": "clawhub/x-actionbook-recap"
+      },
+      {
+        "source": "clawhub/self-integration"
+      }
+    ]
+  },
+  "presentation": {
+    "displayName": "Charly",
+    "role": "GEO Specialist",
+    "imageAsset": "assets/agent1.jpg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Specialist for Generative Engine Optimization — the next evolution of SEO, focused on AI search engines. Charly optimizes your content and brand presence for ChatGPT, Perplexity, and other AI-powered discovery platforms.",
+    "skillTags": [
+      {
+        "label": "AI Search Optimization",
+        "icon": "🤖"
+      },
+      {
+        "label": "Content Strategy",
+        "icon": "📝"
+      },
+      {
+        "label": "LLM Visibility",
+        "icon": "🔍"
+      },
+      {
+        "label": "Brand Monitoring",
+        "icon": "📊"
+      },
+      {
+        "label": "Citation Tracking",
+        "icon": "🎯"
+      }
+    ]
+  }
+}
