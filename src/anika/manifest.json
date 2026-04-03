@@ -6,16 +6,10 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/gog"
-      },
-      {
-        "source": "clawhub/playwright-npx"
-      },
-      {
-        "source": "clawhub/self-integration"
-      }
+    "bundled": [
+      "gog",
+      "playwright-npx",
+      "self-integration"
     ]
   },
   "presentation": {
