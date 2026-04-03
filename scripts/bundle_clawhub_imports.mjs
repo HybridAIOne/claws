@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const DEFAULT_CLAWHUB_BASE_URL = 'https://clawhub.ai/api/v1';
 const RETRYABLE_STATUS_CODES = new Set([429, 503]);
@@ -19,6 +20,8 @@ Options:
   --persona <id>           Limit to one persona id (repeatable)
   --include-slug <slug>    Limit to one clawhub slug (repeatable)
   --base-url <url>         Override clawhub API base URL
+  --repo-root <path>       Explicit repository root (default: script parent)
+  --src-dir <path>         Source personas directory (default: <repo-root>/src)
   --help                   Show this help
 
 Examples:
@@ -29,11 +32,15 @@ Examples:
 }
 
 function parseArgs(argv) {
+  const scriptDir = path.dirname(fileURLToPath(import.meta.url));
+  const defaultRepoRoot = path.resolve(scriptDir, '..');
   const options = {
     dryRun: false,
     force: false,
     personas: new Set(),
     includeSlugs: new Set(),
+    repoRoot: defaultRepoRoot,
+    srcDir: null,
     baseUrl:
       process.env.CLAWHUB_API_BASE_URL?.replace(/\/+$/, '') ||
       DEFAULT_CLAWHUB_BASE_URL,
@@ -70,6 +77,20 @@ function parseArgs(argv) {
       i += 1;
       continue;
     }
+    if (arg === '--repo-root') {
+      const value = argv[i + 1];
+      if (!value) throw new Error('--repo-root requires a value');
+      options.repoRoot = path.resolve(value);
+      i += 1;
+      continue;
+    }
+    if (arg === '--src-dir') {
+      const value = argv[i + 1];
+      if (!value) throw new Error('--src-dir requires a value');
+      options.srcDir = value;
+      i += 1;
+      continue;
+    }
     if (arg === '--help' || arg === '-h') {
       options.help = true;
       continue;
@@ -80,8 +101,7 @@ function parseArgs(argv) {
   return options;
 }
 
-function findPersonaDirs(repoRoot) {
-  const srcDir = path.join(repoRoot, 'src');
+function findPersonaDirsInSrcDir(srcDir) {
   const entries = fs.readdirSync(srcDir, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isDirectory())
@@ -158,6 +178,45 @@ function parseRetryAfterMs(header) {
     return Math.max(date - Date.now(), 0);
   }
   return null;
+}
+
+function ensureCommandAvailable(command) {
+  try {
+    execFileSync(command, ['-v'], { stdio: 'ignore' });
+  } catch {
+    throw new Error(
+      `Required dependency "${command}" is not available in PATH. Install it and retry.`,
+    );
+  }
+}
+
+function isUnsafeZipEntry(entry) {
+  if (!entry || entry.includes('\u0000')) return true;
+  if (entry.startsWith('/') || entry.startsWith('\\')) return true;
+  if (/^[a-zA-Z]:[\\/]/.test(entry)) return true;
+  if (entry.includes('\\')) return true;
+  const segments = entry.split('/').filter(Boolean);
+  return segments.includes('..');
+}
+
+function validateZipEntries(archivePath) {
+  const output = execFileSync('unzip', ['-Z', '-1', archivePath], {
+    encoding: 'utf8',
+  });
+  const entries = output
+    .split('\n')
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  if (entries.length === 0) {
+    throw new Error('Archive is empty');
+  }
+
+  for (const entry of entries) {
+    if (isUnsafeZipEntry(entry)) {
+      throw new Error(`Unsafe zip entry detected: ${entry}`);
+    }
+  }
 }
 
 async function fetchWithRetry(url) {
@@ -276,6 +335,7 @@ async function bundleSlug({
 
   try {
     fs.writeFileSync(archivePath, Buffer.from(archiveBytes));
+    validateZipEntries(archivePath);
     execFileSync('unzip', ['-qq', archivePath, '-d', extractDir]);
 
     const extractedRoot = resolveExtractedSkillRoot(extractDir);
@@ -331,8 +391,20 @@ async function main() {
     return;
   }
 
-  const repoRoot = process.cwd();
-  const personas = findPersonaDirs(repoRoot).filter(
+  const repoRoot = options.repoRoot;
+  const srcDir = options.srcDir
+    ? path.isAbsolute(options.srcDir)
+      ? options.srcDir
+      : path.resolve(options.srcDir)
+    : path.join(repoRoot, 'src');
+
+  if (!fs.existsSync(srcDir)) {
+    throw new Error(`Source directory does not exist: ${srcDir}`);
+  }
+
+  ensureCommandAvailable('unzip');
+
+  const personas = findPersonaDirsInSrcDir(srcDir).filter(
     ({ id }) => options.personas.size === 0 || options.personas.has(id),
   );
 
@@ -356,15 +428,16 @@ async function main() {
       (slug) =>
         options.includeSlugs.size === 0 || options.includeSlugs.has(slug),
     );
+    const dedupedSelectedSlugs = Array.from(new Set(selectedSlugs));
 
-    if (selectedSlugs.length === 0) {
+    if (dedupedSelectedSlugs.length === 0) {
       continue;
     }
 
     console.log(`\nPersona: ${persona.id}`);
     const bundledThisPersona = new Set();
 
-    for (const slug of selectedSlugs) {
+    for (const slug of dedupedSelectedSlugs) {
       const result = await bundleSlug({
         personaId: persona.id,
         slug,

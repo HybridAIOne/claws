@@ -72,6 +72,11 @@ Useful options:
 - `--force`: overwrite existing `workspace/skills/<slug>` directories
 - `--base-url <url>`: override ClawHub API base URL (also reads `CLAWHUB_API_BASE_URL`)
 
+Dependencies for bundling:
+
+- `node` (for `scripts/bundle_clawhub_imports.mjs`)
+- `unzip` (used to inspect and extract downloaded skill archives)
+
 After bundling, run `./build.sh` to rebuild `.claw` archives.
 
 ## Installing a Claw

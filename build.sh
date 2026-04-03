@@ -83,7 +83,13 @@ mkdir -p "$DIST_DIR"
 
 if [[ "$RUN_BUNDLE_IMPORTS" -eq 1 ]]; then
   echo "Bundling clawhub imports into workspace/skills..."
-  node "$REPO_ROOT/scripts/bundle_clawhub_imports.mjs" "${BUNDLE_ARGS[@]}"
+  (
+    cd "$REPO_ROOT"
+    node "$REPO_ROOT/scripts/bundle_clawhub_imports.mjs" \
+      --repo-root "$REPO_ROOT" \
+      --src-dir "$SRC_DIR" \
+      "${BUNDLE_ARGS[@]}"
+  )
 fi
 
 read_manifest_array() {
