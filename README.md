@@ -36,6 +36,16 @@ Or point at a different source directory:
 
 This zips each subdirectory in `src/` and writes `<dirname>.claw` to `dist/`.
 
+You can also run the import-to-bundled migration as part of build:
+
+```bash
+# Bundle clawhub imports first, then build
+./build.sh --bundle-imports
+
+# Bundle only selected personas before build
+./build.sh --bundle-imports --bundle-persona anika --bundle-persona nora
+```
+
 ## Automating ClawHub Skill Bundling
 
 Most personas currently use `skills.imports` with `clawhub/<slug>` sources.
@@ -43,7 +53,7 @@ To avoid runtime rate-limit failures during persona installs, you can materializ
 those imports into bundled skills under `workspace/skills/` and rewrite
 manifests to `skills.bundled`.
 
-Use:
+Use the standalone script directly when you want migration-only runs:
 
 ```bash
 # Preview changes
