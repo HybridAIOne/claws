@@ -6,19 +6,11 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/gog"
-      },
-      {
-        "source": "clawhub/playwright-npx"
-      },
-      {
-        "source": "clawhub/desearch-x-search"
-      },
-      {
-        "source": "clawhub/x-actionbook-recap"
-      }
+    "bundled": [
+      "desearch-x-search",
+      "gog",
+      "playwright-npx",
+      "x-actionbook-recap"
     ]
   },
   "presentation": {

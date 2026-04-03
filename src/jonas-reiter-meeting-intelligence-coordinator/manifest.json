@@ -6,13 +6,9 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/native-linear"
-      },
-      {
-        "source": "clawhub/gog"
-      }
+    "bundled": [
+      "gog",
+      "native-linear"
     ]
   }
 }

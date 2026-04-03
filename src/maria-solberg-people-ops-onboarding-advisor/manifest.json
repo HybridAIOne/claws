@@ -6,13 +6,9 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/gog"
-      },
-      {
-        "source": "clawhub/gcal-pro"
-      }
+    "bundled": [
+      "gcal-pro",
+      "gog"
     ]
   }
 }
