@@ -6,13 +6,9 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/pr-review-loop"
-      },
-      {
-        "source": "clawhub/repo-pr-triage"
-      }
+    "bundled": [
+      "pr-review-loop",
+      "repo-pr-triage"
     ]
   }
 }

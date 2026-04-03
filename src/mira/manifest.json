@@ -6,19 +6,11 @@
   "author": "HybridAI",
   "version": "1.0.0",
   "skills": {
-    "imports": [
-      {
-        "source": "clawhub/gog"
-      },
-      {
-        "source": "clawhub/desearch-x-search"
-      },
-      {
-        "source": "clawhub/x-actionbook-recap"
-      },
-      {
-        "source": "clawhub/self-integration"
-      }
+    "bundled": [
+      "desearch-x-search",
+      "gog",
+      "self-integration",
+      "x-actionbook-recap"
     ]
   },
   "presentation": {
