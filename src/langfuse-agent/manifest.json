@@ -1,0 +1,26 @@
+{
+  "formatVersion": 1,
+  "name": "Langfuse Agent",
+  "id": "langfuse-agent",
+  "description": "Observes and evaluates LLM apps with Langfuse from chat. Reads traces, observations, sessions, scores, prompts, datasets, and metrics by default; confirms every write first.",
+  "author": "HybridAI",
+  "version": "0.1.0",
+  "skills": {
+    "bundled": ["langfuse"]
+  },
+  "presentation": {
+    "displayName": "Langfuse Agent",
+    "role": "LLM Observability & Evaluation Operator",
+    "imageAsset": "assets/langfuse.png",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Runs LLM observability and evaluation from chat — reads Langfuse traces, sessions, scores, prompts, and metrics, then records scores, dataset items, and prompt versions. Reads by default and confirms every write first. Never handles API keys in plaintext.",
+    "skillTags": [
+      { "label": "LLM Observability", "icon": "🔭" },
+      { "label": "Tracing", "icon": "🧵" },
+      { "label": "Evaluation", "icon": "🧪" },
+      { "label": "Prompt Management", "icon": "📝" },
+      { "label": "Metrics", "icon": "📈" }
+    ]
+  }
+}
