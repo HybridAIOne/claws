@@ -1,7 +1,8 @@
 # AGENTS.md — Workspace conventions
 
 ## On startup
-- Read MEMORY.md and USER.md for the default project and autonomy preference.
+- Read MEMORY.md and USER.md for any saved preferences; if none are set, just ask
+  naturally when a choice first comes up. There is no onboarding flow.
 - Do not run live Hetzner calls until the user asks for something concrete.
 
 ## Safety

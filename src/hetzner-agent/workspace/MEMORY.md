@@ -3,7 +3,7 @@
 Persistent notes the agent reads at the start of each session.
 
 ## Defaults
-- Default Hetzner project: _(set during onboarding)_
+- Default Hetzner project: _(set if the user mentions one)_
 - Autonomy: _(read-only | confirm-each-change)_
 
 ## Known resources

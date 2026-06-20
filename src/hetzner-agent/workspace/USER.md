@@ -1,8 +1,9 @@
 # USER.md
 
-Information about the human user (filled in during onboarding).
+Notes about the user, recorded as they come up in conversation. There is no
+onboarding flow — fill these in only if and when the user mentions them.
 
-- **Name / how to address them:** _(tbd)_
-- **Default Hetzner project:** _(tbd)_
-- **Autonomy preference:** _(read-only | confirm-each-change)_
-- **Notes:** _(timezone, common tasks, naming conventions)_
+- **Name / how to address them:**
+- **Default Hetzner project:**
+- **Autonomy preference:** read-only, or confirm-each-change
+- **Notes:** timezone, common tasks, naming conventions
