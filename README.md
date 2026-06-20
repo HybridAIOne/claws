@@ -36,6 +36,49 @@ Or point at a different source directory:
 
 This zips each subdirectory in `src/` and writes `<dirname>.claw` to `dist/`.
 
+You can also run the import-to-bundled migration as part of build:
+
+```bash
+# Bundle clawhub imports first, then build
+./build.sh --bundle-imports
+
+# Bundle only selected personas before build
+./build.sh --bundle-imports --bundle-persona anika --bundle-persona nora
+```
+
+## Automating ClawHub Skill Bundling
+
+Most personas currently use `skills.imports` with `clawhub/<slug>` sources.
+To avoid runtime rate-limit failures during persona installs, you can materialize
+those imports into bundled skills under `workspace/skills/` and rewrite
+manifests to `skills.bundled`.
+
+Use the standalone script directly when you want migration-only runs:
+
+```bash
+# Preview changes
+node scripts/bundle_clawhub_imports.mjs --dry-run
+
+# Bundle only selected personas
+node scripts/bundle_clawhub_imports.mjs --persona anika --persona nora
+
+# Bundle selected slugs only
+node scripts/bundle_clawhub_imports.mjs --include-slug gog --include-slug self-integration
+```
+
+Useful options:
+
+- `--dry-run`: print planned actions without writing files
+- `--force`: overwrite existing `workspace/skills/<slug>` directories
+- `--base-url <url>`: override ClawHub API base URL (also reads `CLAWHUB_API_BASE_URL`)
+
+Dependencies for bundling:
+
+- `node` (for `scripts/bundle_clawhub_imports.mjs`)
+- `unzip` (used to inspect and extract downloaded skill archives)
+
+After bundling, run `./build.sh` to rebuild `.claw` archives.
+
 ## Installing a Claw
 
 Download or clone this repo, then install a `.claw` file into your HybridClaw

@@ -2,16 +2,95 @@
 # build.sh — Builds each claw source directory in src/ into a spec-compliant
 # .claw archive in dist/.
 #
-# Usage: ./build.sh [src-dir]
+# Usage: ./build.sh [options] [src-dir]
 #   Defaults to ./src if no argument is given.
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")" && pwd)"
-SRC_DIR="${1:-$REPO_ROOT/src}"
 DIST_DIR="$REPO_ROOT/dist"
 
+SRC_DIR="$REPO_ROOT/src"
+RUN_BUNDLE_IMPORTS=0
+declare -a BUNDLE_ARGS=()
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --bundle-imports)
+      RUN_BUNDLE_IMPORTS=1
+      shift
+      ;;
+    --bundle-force)
+      RUN_BUNDLE_IMPORTS=1
+      BUNDLE_ARGS+=("--force")
+      shift
+      ;;
+    --bundle-persona)
+      RUN_BUNDLE_IMPORTS=1
+      [[ $# -ge 2 ]] || {
+        echo "--bundle-persona requires a value" >&2
+        exit 1
+      }
+      BUNDLE_ARGS+=("--persona" "$2")
+      shift 2
+      ;;
+    --bundle-include-slug)
+      RUN_BUNDLE_IMPORTS=1
+      [[ $# -ge 2 ]] || {
+        echo "--bundle-include-slug requires a value" >&2
+        exit 1
+      }
+      BUNDLE_ARGS+=("--include-slug" "$2")
+      shift 2
+      ;;
+    --bundle-base-url)
+      RUN_BUNDLE_IMPORTS=1
+      [[ $# -ge 2 ]] || {
+        echo "--bundle-base-url requires a value" >&2
+        exit 1
+      }
+      BUNDLE_ARGS+=("--base-url" "$2")
+      shift 2
+      ;;
+    --help|-h)
+      cat <<'EOF'
+Usage: ./build.sh [options] [src-dir]
+
+Build options:
+  [src-dir]                    Source directory (default: ./src)
+
+Bundling options (optional pre-step):
+  --bundle-imports             Bundle clawhub imports before packing
+  --bundle-force               Overwrite existing workspace/skills/<slug>
+  --bundle-persona <id>        Bundle only selected persona (repeatable)
+  --bundle-include-slug <slug> Bundle only selected clawhub slug (repeatable)
+  --bundle-base-url <url>      Override ClawHub API base URL for bundling
+EOF
+      exit 0
+      ;;
+    *)
+      if [[ "$1" == -* ]]; then
+        echo "Unknown option: $1" >&2
+        exit 1
+      fi
+      SRC_DIR="$1"
+      shift
+      ;;
+  esac
+done
+
 mkdir -p "$DIST_DIR"
+
+if [[ "$RUN_BUNDLE_IMPORTS" -eq 1 ]]; then
+  echo "Bundling clawhub imports into workspace/skills..."
+  (
+    cd "$REPO_ROOT"
+    node "$REPO_ROOT/scripts/bundle_clawhub_imports.mjs" \
+      --repo-root "$REPO_ROOT" \
+      --src-dir "$SRC_DIR" \
+      "${BUNDLE_ARGS[@]}"
+  )
+fi
 
 read_manifest_array() {
   local manifest_path="$1"
