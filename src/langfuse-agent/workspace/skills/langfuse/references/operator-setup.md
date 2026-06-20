@@ -47,6 +47,7 @@ documentation examples.
 | ----------------- | -------------------------------- |
 | Langfuse Cloud EU | `https://cloud.langfuse.com`     |
 | Langfuse Cloud US | `https://us.cloud.langfuse.com`  |
+| Langfuse Cloud JP | `https://jp.cloud.langfuse.com`  |
 | Self-hosted       | your origin, e.g. `https://langfuse.internal.example.com` |
 
 `LANGFUSE_HOST` is a plaintext config variable. A request can also override it

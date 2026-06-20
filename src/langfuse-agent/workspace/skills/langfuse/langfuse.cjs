@@ -230,7 +230,15 @@ function parsePagination(args, query) {
   const page = popFlag(args, '--page');
   if (page !== undefined) query.page = parsePositiveInteger(page, '--page');
   const limit = popFlag(args, '--limit');
-  if (limit !== undefined) query.limit = parsePositiveInteger(limit, '--limit');
+  if (limit !== undefined) {
+    const value = parsePositiveInteger(limit, '--limit');
+    if (value > 100) {
+      die('--limit cannot exceed 100 (Langfuse page-size cap); use --page to paginate.');
+    }
+    query.limit = value;
+  }
+  const cursor = popFlag(args, '--cursor');
+  if (cursor !== undefined) query.cursor = cursor;
 }
 
 function buildScoreBody(args) {
@@ -775,6 +783,10 @@ Auth and host (gateway-resolved, never seen by the model):
   Authorization: Basic <secret:${BASIC_AUTH_SECRET}>   (base64 of public-key:secret-key)
   Base URL defaults to ${HOST_PLACEHOLDER}; override with --host https://cloud.langfuse.com
   --basic-auth-secret NAME   Runtime secret with base64 public:secret (default ${BASIC_AUTH_SECRET})
+
+Pagination (list operations):
+  --limit n   page size, max 100 (Langfuse cap)
+  --page n    page number (legacy endpoints) | --cursor c  cursor (modern endpoints)
 
 Read operations (green):
   health

@@ -1,6 +1,6 @@
 ---
 name: langfuse
-description: "Read Langfuse traces, observations, sessions, scores, prompts, datasets, models, and metrics, and create scores, comments, datasets, dataset items, and prompt versions through gateway-proxied API requests."
+description: "Use Langfuse for LLM observability and evaluation and look up Langfuse documentation. In HybridClaw, data access (traces, observations, sessions, scores, prompts, datasets, metrics) goes through the gateway-proxied langfuse.cjs helper with SecretRef auth — reads are green, writes are grant-gated. Documentation retrieval uses langfuse.com llms.txt, markdown pages, and search-docs. Covers instrumentation, prompt migration, error analysis, and LLM-as-a-judge calibration."
 user-invocable: true
 requires:
   bins:
@@ -18,22 +18,22 @@ credentials:
       (public key `pk-lf-...` and secret key `sk-lf-...`). Locally base64-encode
       `public-key:secret-key` and store only that encoded credential in chat with
       `/secret set LANGFUSE_BASIC_AUTH "<base64-public-colon-secret>"`.
-      Use a read-only or project-scoped key for analysis; only the same key is
-      needed to write scores, comments, datasets, or prompt versions.
+      The same key reads observability data and writes scores, comments,
+      datasets, and prompt versions.
 config_variables:
   - id: langfuse-host
     env: LANGFUSE_HOST
     required: true
     scope: "Langfuse API base URL used in <LANGFUSE_HOST>/api/public"
     how_to_obtain: |
-      Use your Langfuse deployment base URL: `https://cloud.langfuse.com` for
-      Langfuse Cloud EU, `https://us.cloud.langfuse.com` for Langfuse Cloud US,
+      Use your Langfuse deployment base URL: `https://cloud.langfuse.com` (EU),
+      `https://us.cloud.langfuse.com` (US), `https://jp.cloud.langfuse.com` (JP),
       or your self-hosted origin. Store it in chat with
       `/env set LANGFUSE_HOST https://cloud.langfuse.com`.
 metadata:
   hybridclaw:
     category: observability
-    short_description: "Langfuse LLM observability: traces, scores, prompts, datasets, metrics, and guarded evaluation writes."
+    short_description: "Langfuse LLM observability: traces, scores, prompts, datasets, metrics, docs lookup, and guarded evaluation writes."
     tags:
       - langfuse
       - observability
@@ -84,21 +84,35 @@ metadata:
 
 # Langfuse
 
-Use this skill for Langfuse LLM observability and evaluation work: inspect
-traces, observations, sessions, and scores; query metrics; read prompts and
-datasets; and — after explicit operator approval — record scores, comments,
-dataset items, and new prompt versions.
+This skill helps you use Langfuse effectively across all common workflows:
+instrumenting applications, migrating prompts, debugging traces, accessing data,
+and evaluating outputs.
 
-## Setup
+> **HybridClaw integration.** This is the official Langfuse skill
+> ([github.com/langfuse/skills](https://github.com/langfuse/skills), MIT)
+> adapted for HybridClaw. Two things differ from the upstream skill:
+>
+> 1. **Credentials never leave the gateway.** Do not export
+>    `LANGFUSE_PUBLIC_KEY` / `LANGFUSE_SECRET_KEY`, run `npx langfuse-cli`, or
+>    paste keys anywhere. Store them once in the runtime stores (below); the
+>    gateway injects them server-side.
+> 2. **Data access goes through `langfuse.cjs`**, not the Langfuse CLI. The
+>    helper builds each REST request and sends it through the HybridClaw gateway,
+>    which resolves `Authorization: Basic <secret:LANGFUSE_BASIC_AUTH>` and the
+>    `<env:LANGFUSE_HOST>` base URL. Wherever a reference says to run
+>    `langfuse-cli` or `curl -H "Authorization: Basic $AUTH"`, use the helper
+>    instead. Documentation retrieval (section 2) is unchanged.
 
-The helper never sees credentials. The gateway injects them server-side from two
-stored values:
+## HybridClaw setup
 
-1. `LANGFUSE_BASIC_AUTH` — base64 of `public-key:secret-key`. Store it in chat
-   with `/secret set LANGFUSE_BASIC_AUTH "<base64-public-colon-secret>"`.
-2. `LANGFUSE_HOST` — your Langfuse base URL. Store it in chat with
+The helper never sees credentials. Store two values once:
+
+1. `LANGFUSE_BASIC_AUTH` — base64 of `public-key:secret-key`:
+   `/secret set LANGFUSE_BASIC_AUTH "<base64-public-colon-secret>"`
+2. `LANGFUSE_HOST` — your Langfuse base URL:
    `/env set LANGFUSE_HOST https://cloud.langfuse.com` (use
-   `https://us.cloud.langfuse.com` for US, or your self-hosted origin).
+   `https://us.cloud.langfuse.com` for US, `https://jp.cloud.langfuse.com` for
+   JP, or your self-hosted origin).
 
 Local-terminal alternative: `hybridclaw secret set LANGFUSE_BASIC_AUTH "<...>"`
 and `hybridclaw env set LANGFUSE_HOST https://cloud.langfuse.com`.
@@ -106,75 +120,79 @@ and `hybridclaw env set LANGFUSE_HOST https://cloud.langfuse.com`.
 See [references/operator-setup.md](references/operator-setup.md) for key scope,
 host selection, autonomy defaults, and network-policy notes.
 
-## Default Workflow
+## Core Principles
 
-1. Start read-only: list traces, observations, sessions, scores, prompts, and
-   datasets, or query `metrics`.
-2. Use `plan` for natural-language requests before building any write request.
-3. Treat `langfuse.cjs` as the API wrapper. Do not handcraft Langfuse API URLs,
-   JSON bodies, tiers, host, or the Basic auth header from memory.
-4. For prompt/user testing, stop after `plan` or after helper `http-request`
-   payload generation. Do not call helper `run` or the built-in `http_request`
-   tool.
-5. For real user requests that need live Langfuse data, use helper `run`. The
-   helper constructs the request, sends it through the HybridClaw gateway, and
-   the gateway resolves `Authorization: Basic <secret:LANGFUSE_BASIC_AUTH>` and
-   the `<env:LANGFUSE_HOST>` base URL server-side. Do not rewrite the secret
-   placeholder, preflight it, inspect it, or ask the model for the keys.
-6. Use `http-request` only when you need to inspect the generated gateway
-   payload or when the active runtime cannot give the helper gateway access.
-7. If a live call returns 401 or 403, stop after that first failure. Do not
-   retry or fan out to more endpoints; ask the operator to set or verify
-   `LANGFUSE_BASIC_AUTH` and `LANGFUSE_HOST`.
-8. Require an explicit operator grant before any write (`create-score`,
-   `create-comment`, `create-dataset`, `create-dataset-item`, `create-prompt`).
-   Pass `--operator-grant` only after that grant.
+Follow these principles for ALL Langfuse work:
 
-## Command Contract
+1. **Documentation first**: never implement from memory. Langfuse updates
+   frequently — fetch current docs (section 2) before writing instrumentation or
+   SDK code.
+2. **Helper for data access**: use `langfuse.cjs` (gateway + SecretRef) when
+   querying or modifying Langfuse data. It owns endpoints, methods, bodies,
+   stakes tiers, host, and the Basic auth placeholder.
+3. **Best practices by use case**: check the relevant reference below before
+   implementing.
+4. **Use latest Langfuse versions**: unless the user says otherwise, target the
+   latest Langfuse SDKs/APIs.
 
-Run the helper:
+## Use-case references
+
+- instrumenting an existing function/application:
+  [references/instrumentation.md](references/instrumentation.md)
+- migrating prompts from a codebase into Langfuse:
+  [references/prompt-migration.md](references/prompt-migration.md)
+- capturing user feedback (thumbs, ratings, implicit signals) as scores:
+  [references/user-feedback.md](references/user-feedback.md)
+- systematic error analysis — reading traces, building a failure taxonomy,
+  deciding what to fix: [references/error-analysis.md](references/error-analysis.md)
+- judge calibration (LLM-as-a-Judge reliability, accuracy checks, confusion
+  matrices, metric ingestion):
+  [references/judge-calibration.md](references/judge-calibration.md)
+- upgrading or migrating Langfuse SDKs:
+  [references/sdk-upgrade.md](references/sdk-upgrade.md)
+- CI/CD experiment gates with `langfuse/experiment-action`:
+  [references/ci-cd.md](references/ci-cd.md)
+- raw Langfuse REST/CLI semantics (endpoints, pagination, v2 vs legacy):
+  [references/cli.md](references/cli.md)
+- HybridClaw credential, host, autonomy, and network-policy setup:
+  [references/operator-setup.md](references/operator-setup.md)
+- submitting feedback about this skill:
+  [references/skill-feedback.md](references/skill-feedback.md)
+
+## 1. Langfuse data access (HybridClaw gateway helper)
+
+`langfuse.cjs` is the API wrapper. Do not handcraft Langfuse API URLs, JSON
+bodies, tiers, host, or the Basic auth header from memory.
 
 ```bash
 node skills/langfuse/langfuse.cjs --help
 ```
 
-Plan a request without contacting Langfuse:
+- **plan** classifies a natural-language request into an operation + tier:
+  `node skills/langfuse/langfuse.cjs --format json plan "average eval score this week"`
+- **run** executes a live request through the gateway (the gateway injects the
+  Basic auth header):
+  `node skills/langfuse/langfuse.cjs --format json run list-traces --user-id alice --limit 50`
+- **http-request** emits the gateway-ready payload without calling Langfuse —
+  use it for dry-run inspection or runtimes without helper gateway access.
+
+Read examples (green):
 
 ```bash
-node skills/langfuse/langfuse.cjs --format json plan "Average eval score this week"
-```
-
-Run live read requests:
-
-```bash
-node skills/langfuse/langfuse.cjs --format json run list-traces --user-id alice --limit 50
 node skills/langfuse/langfuse.cjs --format json run get-trace --trace-id abc123
-node skills/langfuse/langfuse.cjs --format json run list-observations --type GENERATION
+node skills/langfuse/langfuse.cjs --format json run list-observations --type GENERATION --trace-id abc123
 node skills/langfuse/langfuse.cjs --format json run list-scores --name quality
 node skills/langfuse/langfuse.cjs --format json run get-prompt --prompt-name support-reply --label production
 node skills/langfuse/langfuse.cjs --format json run metrics --query '{"view":"traces","metrics":[{"measure":"count","aggregation":"count"}]}'
 ```
 
-Run guarded live write requests (only after an explicit operator grant):
+Guarded write examples (amber — only after an explicit operator grant):
 
 ```bash
 node skills/langfuse/langfuse.cjs --format json run create-score \
-  --trace-id abc123 --name quality --value 0.8 --data-type NUMERIC \
-  --comment "reviewed" --operator-grant
-
-node skills/langfuse/langfuse.cjs --format json run create-dataset-item \
-  --dataset-name regressions --input-json '{"q":"..."}' \
-  --expected-output-json '{"a":"..."}' --source-trace-id abc123 --operator-grant
-
+  --trace-id abc123 --name quality --value 0.8 --data-type NUMERIC --comment "reviewed" --operator-grant
 node skills/langfuse/langfuse.cjs --format json run create-prompt \
-  --name summarizer --type text --prompt "Summarize: {{input}}" \
-  --label production --commit-message "tighten instructions" --operator-grant
-```
-
-Build a dry-run gateway payload without calling Langfuse:
-
-```bash
-node skills/langfuse/langfuse.cjs --format json http-request list-traces --user-id alice
+  --name summarizer --type text --prompt "Summarize: {{input}}" --label production --operator-grant
 ```
 
 Select region or self-hosted host explicitly (otherwise `<env:LANGFUSE_HOST>`):
@@ -183,25 +201,60 @@ Select region or self-hosted host explicitly (otherwise `<env:LANGFUSE_HOST>`):
 node skills/langfuse/langfuse.cjs --format json run list-traces --host https://us.cloud.langfuse.com
 ```
 
-## Working Rules
+### Working rules
 
-- Treat `create-score`, `create-comment`, `create-dataset`,
-  `create-dataset-item`, and `create-prompt` as state-changing. Produce an
-  approval plan, wait for the operator's grant, then run the exact approved
-  helper command with `--operator-grant`.
-- Deletions of any kind, and project / API-key / membership / organization /
-  SCIM administration are out of scope for this skill. Use the Langfuse UI or
-  admin API directly for those.
+- Reads are green. Writes (`create-score`, `create-comment`, `create-dataset`,
+  `create-dataset-item`, `create-prompt`) require `--operator-grant`: produce a
+  plan, wait for the operator's grant, then run the exact approved command.
+- Deletions and project / API-key / organization / SCIM administration are out
+  of scope. Use the Langfuse UI for those.
+- Page size is capped at 100; use `--page` (legacy) or `--cursor` (modern
+  endpoints) to paginate. The helper rejects `--limit` above 100.
+- For broad trace queries that time out on Langfuse Cloud, prefer
+  `list-observations` (with `--trace-id` when traversing from a known trace).
+- In OpenTelemetry-instrumented apps, trace-level `input`/`output` can be null —
+  the content lives in a `GENERATION` observation, so read observations to see
+  prompts/outputs.
+- Before creating a score config, list existing ones (`list-score-configs`);
+  configs cannot be deleted.
 - Never print, inspect, or ask for `LANGFUSE_BASIC_AUTH`; the gateway injects it
-  server-side as `Authorization: Basic <secret:LANGFUSE_BASIC_AUTH>`.
-- Prompt names, dataset names, and run names are URL-encoded by the helper; pass
-  the human-readable name, not a pre-encoded one.
-- For metrics, pass a single JSON object to `--query` per the Langfuse Metrics
-  API; the helper validates it parses and forwards it unchanged.
+  as `Authorization: Basic <secret:LANGFUSE_BASIC_AUTH>`.
 - Cost per assistant run is recorded by HybridClaw `UsageTotals`; helper output
   includes `costMeasurement.system = "UsageTotals"` for eval verification.
 
-## Eval Suite
+## 2. Langfuse documentation
+
+Prefer your application's native web fetch/search tools (e.g. `web_fetch`,
+`web_search`) over `curl`. The URLs work with any fetching method.
+
+### 2a. Documentation index (llms.txt)
+
+Fetch the full index of doc pages, then fetch the right one:
+
+```bash
+curl -s https://langfuse.com/llms.txt
+```
+
+### 2b. Fetch individual pages as markdown
+
+Append `.md` to any doc path (or send `Accept: text/markdown`):
+
+```bash
+curl -s "https://langfuse.com/docs/observability/overview.md"
+```
+
+### 2c. Search documentation
+
+When you don't know the page (also indexes GitHub issues/discussions):
+
+```bash
+curl -s "https://langfuse.com/api/search-docs?query=How+do+I+trace+LangGraph+agents"
+```
+
+Workflow: start with **llms.txt** to orient → **fetch the specific page** → fall
+back to **search** when the topic is unclear.
+
+## Eval suite
 
 ```bash
 node skills/langfuse/langfuse.cjs --format json eval-scenarios
@@ -210,6 +263,20 @@ node skills/langfuse/langfuse.cjs --format json eval-scenarios
 The fixture at `evals/scenarios.json` contains 10 scenarios covering trace,
 observation, session, score, metric, prompt, and dataset reads plus guarded
 score, dataset, and prompt writes.
+
+## Skill feedback
+
+If the skill gives wrong or outdated guidance, is missing something, or could be
+improved, offer to submit feedback to the Langfuse skill maintainers following
+[references/skill-feedback.md](references/skill-feedback.md). Do **not** trigger
+this for issues with Langfuse the product — only this skill's instructions.
+
+## Attribution
+
+Adapted from the official Langfuse skill
+([github.com/langfuse/skills](https://github.com/langfuse/skills)), MIT-licensed,
+with HybridClaw gateway/SecretRef data access in place of the upstream
+`langfuse-cli` + plaintext-key path. See [NOTICE.md](NOTICE.md).
 
 ## Validation
 
