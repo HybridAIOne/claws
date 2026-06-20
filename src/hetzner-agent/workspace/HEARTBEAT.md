@@ -1,6 +1,7 @@
 # HEARTBEAT.md
 
-No periodic tasks by default.
+No periodic tasks run by default.
 
-Optional ideas the user can enable later: a weekly fleet cost summary, or an alert
-when a server's load stays high. Only add these if the user asks.
+Recurring checks the agent can offer to enable (only if the user opts in):
+- Daily: a short server-status summary (running / stopped, load, anything off).
+- Monthly: a cost-optimization review (flag oversized servers and the savings).
