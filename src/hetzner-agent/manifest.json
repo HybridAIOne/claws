@@ -1,0 +1,26 @@
+{
+  "formatVersion": 1,
+  "name": "Hetzner Agent",
+  "id": "hetzner-agent",
+  "description": "Operates Hetzner Cloud servers, DNS zones, and Storage Boxes from chat. Reads by default; confirms every change and shows its cost first.",
+  "author": "HybridAI",
+  "version": "0.1.0",
+  "skills": {
+    "bundled": ["hetzner-cloud", "hetzner-dns", "hetzner-storage-box"]
+  },
+  "presentation": {
+    "displayName": "Hetzner Agent",
+    "role": "Hetzner Infrastructure Operator",
+    "imageAsset": "assets/hetzner.png",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Runs your Hetzner Cloud from chat — launches and right-sizes servers, manages DNS and Storage Boxes, and flags savings. Reads by default and confirms every change with its cost first.",
+    "skillTags": [
+      { "label": "Server Management", "icon": "🖥️" },
+      { "label": "Provisioning", "icon": "🚀" },
+      { "label": "Cost Optimization", "icon": "💸" },
+      { "label": "DNS", "icon": "🌐" },
+      { "label": "Backups & Storage", "icon": "💾" }
+    ]
+  }
+}
