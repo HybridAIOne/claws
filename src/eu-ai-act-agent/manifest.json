@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "name": "EU AI Act Agent",
+  "id": "eu-ai-act-agent",
+  "description": "Checks whether a codebase or app complies with the EU AI Act (Regulation (EU) 2024/1689): detects AI usage, classifies the risk tier, maps provider/deployer obligations, and produces an article-cited gap report. Grounded in a bundled, dated reference pack. Read-only; not legal advice.",
+  "author": "HybridAI",
+  "version": "0.1.0",
+  "createdAt": "2026-06-22T00:00:00Z",
+  "agent": {
+    "model": "claude-sonnet-4-6",
+    "enableRag": false
+  },
+  "skills": {
+    "bundled": ["eu-ai-act-compliance"]
+  },
+  "presentation": {
+    "displayName": "EU AI Act Agent",
+    "role": "EU AI Act Compliance Auditor",
+    "imageAsset": "assets/eu-ai-act-agent.svg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Reviews your codebase or app against the EU AI Act — finds where AI is used, classifies the risk tier, maps the obligations, and writes an article-cited gap report. Read-only, grounded in the current regulation, and clear that it is not legal advice.",
+    "skillTags": [
+      { "label": "Risk Classification", "icon": "⚖️" },
+      { "label": "Codebase Audit", "icon": "🔍" },
+      { "label": "High-Risk & GPAI", "icon": "🧠" },
+      { "label": "Transparency (Art. 50)", "icon": "🪧" },
+      { "label": "Gap Reports", "icon": "📋" }
+    ]
+  }
+}

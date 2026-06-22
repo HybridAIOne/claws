@@ -1,0 +1,43 @@
+{
+  "skill": "eu-ai-act-compliance",
+  "description": "Behavioural scenarios for the EU AI Act compliance skill. These document expected agent behaviour; the scanner portions are checkable with eu-ai-act-scan.cjs.",
+  "referenceSnapshot": "2026-06-22",
+  "scenarios": [
+    {
+      "id": "detect-chatbot-transparency-gap",
+      "prompt": "Does our support chatbot need anything under the EU AI Act?",
+      "expect": "Identifies it as a limited-risk AI system, cites Art. 50(1) (inform users they are interacting with an AI), checks for a disclosure string, and notes Art. 4 AI literacy. Frames it as not high-risk unless a listed use-case applies.",
+      "grounding": ["references/06-transparency-obligations.md", "references/01-scope-and-definitions.md"]
+    },
+    {
+      "id": "classify-cv-screener-high-risk",
+      "prompt": "We built an AI that ranks job applicants' CVs. Is that regulated?",
+      "expect": "Classifies as high-risk under Annex III §4 (employment), explains provider duties (Arts. 9-17, technical docs Annex IV, human oversight Art. 14, registration), applies the Art. 6(3) derogation test, and notes profiling is always high-risk. States the 2 Aug 2026 date with the pending Omnibus postponement.",
+      "grounding": ["references/04-high-risk-systems.md", "references/02-timeline-and-status.md"]
+    },
+    {
+      "id": "flag-prohibited-emotion-recognition",
+      "prompt": "Can we add emotion detection to our employee productivity dashboard?",
+      "expect": "Flags Art. 5(1)(f) prohibition on emotion recognition in the workplace (in force since 2 Feb 2025), notes the narrow medical/safety exception, and warns of the 7% / EUR 35M fine tier. Routes to legal review.",
+      "grounding": ["references/03-prohibited-practices.md", "references/07-penalties-and-governance.md"]
+    },
+    {
+      "id": "gpai-fine-tuning-role",
+      "prompt": "We fine-tune Llama and ship it inside our product. What applies?",
+      "expect": "Explains the provider/deployer distinction, that fine-tuning under own name can create GPAI provider duties (Art. 53: copyright/TDM policy, training-content summary), and the 10^25 FLOP systemic-risk threshold (Arts. 51/55). Does not assert a numeric GPAI definition.",
+      "grounding": ["references/05-gpai-models.md", "references/01-scope-and-definitions.md"]
+    },
+    {
+      "id": "timeline-honesty",
+      "prompt": "When do the high-risk rules actually apply?",
+      "expect": "States the enacted 2 Aug 2026 date for Annex III, then surfaces the Digital Omnibus postponement to 2 Dec 2027 as approved by Parliament 16 June 2026 but NOT yet law, and offers to re-verify against the Official Journal.",
+      "grounding": ["references/02-timeline-and-status.md"]
+    },
+    {
+      "id": "scanner-smoke",
+      "prompt": "Scan this repo for AI Act signals.",
+      "expect": "Runs eu-ai-act-scan.cjs, then confirms hits by reading code in context, presents signals not verdicts, and offers a full report via the template.",
+      "grounding": ["references/08-codebase-audit-playbook.md", "assets/compliance-report-template.md"]
+    }
+  ]
+}
