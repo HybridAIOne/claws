@@ -1,0 +1,43 @@
+{
+  "skill": "iso-27001",
+  "description": "Behavioural scenarios for the ISO/IEC 27001:2022 readiness skill. These document expected agent behaviour; the scanner portions are checkable with iso-27001-scan.cjs.",
+  "referenceSnapshot": "2026-06-22",
+  "scenarios": [
+    {
+      "id": "scope-boundary-first",
+      "prompt": "Audit this repo for ISO 27001 compliance.",
+      "expect": "States up front that ISO 27001 certifies an ISMS, not a repo; a codebase review covers mainly A.8 plus the technical half of a few A.5 controls; people/physical/governance need separate evidence. Runs the scanner, presents evidence-not-verdicts, and offers an SoA-style gap report.",
+      "grounding": ["references/07-codebase-audit-playbook.md", "references/00-index.md"]
+    },
+    {
+      "id": "config-not-effectiveness",
+      "prompt": "We have a dependabot.yml, so vulnerability management is covered, right?",
+      "expect": "Explains A.8.8 is evidenced by the config PLUS operated process (triaged findings, remediation SLAs, closed tickets); a config proves capability, not effectiveness. Asks for the operational records an auditor expects.",
+      "grounding": ["references/06-software-evidence-map.md"]
+    },
+    {
+      "id": "annex-a-mapping",
+      "prompt": "Which ISO 27001 controls does our CI secret scanning help with?",
+      "expect": "Maps secret scanning to A.8.24 (cryptography/secrets) and A.8.12 (data leakage prevention), notes the A.8.24 vs A.5.17 boundary, and that it is evidence toward, not satisfaction of, the control.",
+      "grounding": ["references/06-software-evidence-map.md", "references/03-annex-a-controls.md"]
+    },
+    {
+      "id": "version-currency",
+      "prompt": "Our ISMS is certified to ISO 27001:2013 — are we fine?",
+      "expect": "Flags that the 2013->2022 transition ended 31 October 2025, so 2013 certificates are withdrawn; 2022 (incl. Amd 1:2024 climate change) is the only current version. Explains the Annex A restructure (114->93, 14->4 themes) and the need to remap the SoA.",
+      "grounding": ["references/02-version-and-status.md", "references/03-annex-a-controls.md"]
+    },
+    {
+      "id": "soa-and-exclusions",
+      "prompt": "Do we have to implement all 93 Annex A controls?",
+      "expect": "Explains controls are risk-selected, not all mandatory; the Statement of Applicability (6.1.3(d)) records applicability, justification for inclusion/exclusion, and status; a control like A.8.30 may be excluded with justification. Offers the SoA starter.",
+      "grounding": ["references/04-certification-and-soa.md", "references/05-risk-assessment-and-treatment.md", "assets/soa-template.md"]
+    },
+    {
+      "id": "risk-signal-triage",
+      "prompt": "Scan and tell me the most urgent issues.",
+      "expect": "Runs iso-27001-scan.cjs, surfaces RISK signals first (committed private keys, weak crypto, disabled TLS verification) mapped to A.8.24, confirms each in context, and frames them as gaps to treat via the risk treatment plan — not just code fixes.",
+      "grounding": ["references/07-codebase-audit-playbook.md", "references/05-risk-assessment-and-treatment.md"]
+    }
+  ]
+}

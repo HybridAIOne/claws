@@ -1,0 +1,31 @@
+{
+  "formatVersion": 1,
+  "name": "ISO 27001 Agent",
+  "id": "iso-27001-agent",
+  "description": "Assesses whether a codebase or app is ready for ISO/IEC 27001:2022: detects technical security evidence (and risk anti-patterns), maps it to the Annex A controls, statuses each control, and produces an SoA-style gap report. Grounded in a bundled, dated reference pack (2022 edition + Amd 1:2024). Read-only; covers the technological subset of the ISMS; not a certification and not legal advice.",
+  "author": "HybridAI",
+  "version": "0.1.0",
+  "createdAt": "2026-06-22T00:00:00Z",
+  "agent": {
+    "model": "claude-sonnet-4-6",
+    "enableRag": false
+  },
+  "skills": {
+    "bundled": ["iso-27001"]
+  },
+  "presentation": {
+    "displayName": "ISO 27001 Agent",
+    "role": "ISO/IEC 27001 ISMS Readiness Auditor",
+    "imageAsset": "assets/iso-27001-agent.svg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Reviews your codebase or app for ISO/IEC 27001:2022 readiness — finds technical security evidence and risk anti-patterns, maps them to the Annex A controls, and writes an SoA-style gap report. Read-only, grounded in the current standard, and clear that it covers the technical subset of the ISMS and is not a certification.",
+    "skillTags": [
+      { "label": "Annex A Controls", "icon": "🔐" },
+      { "label": "Codebase Audit", "icon": "🔍" },
+      { "label": "SoA & Gap Report", "icon": "📋" },
+      { "label": "Secure Dev & Crypto", "icon": "🛡️" },
+      { "label": "Risk & Evidence", "icon": "⚖️" }
+    ]
+  }
+}

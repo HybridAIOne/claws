@@ -1,0 +1,8 @@
+<svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ISO 27001 Agent">
+  <circle cx="64" cy="64" r="64" fill="#0E7C86"/>
+  <circle cx="64" cy="64" r="51" fill="none" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="2"/>
+  <path d="M48 58 V46 a16 16 0 0 1 32 0 V58" fill="none" stroke="#FFD23F" stroke-width="6" stroke-linecap="round"/>
+  <rect x="40" y="58" width="48" height="38" rx="7" fill="#FFD23F"/>
+  <circle cx="64" cy="73" r="5.5" fill="#0E7C86"/>
+  <rect x="61.4" y="75" width="5.2" height="12" rx="2.6" fill="#0E7C86"/>
+</svg>
