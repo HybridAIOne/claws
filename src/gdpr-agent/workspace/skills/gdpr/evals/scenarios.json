@@ -1,0 +1,75 @@
+{
+  "description": "Self-check scenarios for the GDPR skill. Each scenario maps a representative request to the reference it should be grounded in, the articles it must cite, and key facts a correct answer includes. The agent is advisory; every scenario expects it to flag legal sign-off where a binding determination is involved.",
+  "scenarios": [
+    {
+      "id": "dsr-access",
+      "prompt": "A user emailed asking for all the data we hold on them. How do we respond?",
+      "reference": "references/data-subject-rights.md",
+      "articles": ["Art. 15", "Art. 12(3)"],
+      "must_mention": ["one-month deadline", "identity verification", "Art. 15(1) metadata", "redact third-party data"]
+    },
+    {
+      "id": "dsr-erasure-exemption",
+      "prompt": "Customer wants their account fully deleted but we need some records for tax law. Can we refuse part of it?",
+      "reference": "references/data-subject-rights.md",
+      "articles": ["Art. 17(1)", "Art. 17(3)(b)"],
+      "must_mention": ["legal obligation exemption", "erase the rest", "notify recipients (Art. 19)"]
+    },
+    {
+      "id": "ropa-entry",
+      "prompt": "Draft a Records of Processing entry for our newsletter signup.",
+      "reference": "references/ropa.md",
+      "articles": ["Art. 30(1)"],
+      "must_mention": ["purpose", "lawful basis", "retention", "recipients", "data categories"]
+    },
+    {
+      "id": "dpia-screening",
+      "prompt": "We're adding automated applicant scoring. Do we need a DPIA?",
+      "reference": "references/dpia.md",
+      "articles": ["Art. 35(1)", "Art. 35(3)(a)"],
+      "must_mention": ["high risk", "systematic evaluation/profiling", "document the screening decision", "prior consultation (Art. 36) if high residual risk"]
+    },
+    {
+      "id": "dpa-contents",
+      "prompt": "What must our contract with a new email vendor contain?",
+      "reference": "references/processors-and-dpa.md",
+      "articles": ["Art. 28(3)"],
+      "must_mention": ["documented instructions", "confidentiality", "Art. 32 security", "sub-processor authorisation", "assist with DSRs and breaches", "delete/return", "audits"]
+    },
+    {
+      "id": "transfer-us-vendor",
+      "prompt": "We want to use a US analytics vendor. Is that a transfer problem?",
+      "reference": "references/international-transfers.md",
+      "articles": ["Art. 44", "Art. 45", "Art. 46"],
+      "must_mention": ["EU-US Data Privacy Framework certification", "SCCs if not certified", "transfer impact assessment", "record in ROPA"]
+    },
+    {
+      "id": "cookie-consent",
+      "prompt": "Write cookie-consent rules for our German site with Google Analytics.",
+      "reference": "references/consent-and-eprivacy.md",
+      "articles": ["Art. 7", "Art. 6(1)(a)"],
+      "must_mention": ["TTDSG/TDDDG §25", "prior opt-in", "no pre-ticked boxes (Planet49)", "reject as easy as accept", "consent record"]
+    },
+    {
+      "id": "breach-72h",
+      "prompt": "We discovered a misconfigured bucket exposed customer data this morning.",
+      "reference": "references/breach-notification.md",
+      "articles": ["Art. 33(1)", "Art. 34"],
+      "must_mention": ["72-hour clock from awareness", "risk assessment", "notify authority if risk", "notify individuals if high risk", "log in breach register regardless"]
+    },
+    {
+      "id": "lawful-basis",
+      "prompt": "What lawful basis should we use to send transactional vs marketing emails?",
+      "reference": "references/regulation-map.md",
+      "articles": ["Art. 6(1)(b)", "Art. 6(1)(a)", "Art. 6(1)(f)"],
+      "must_mention": ["contract for transactional", "consent/soft opt-in for marketing", "document the basis", "Art. 21 objection for marketing"]
+    },
+    {
+      "id": "dpo-needed",
+      "prompt": "Do we need to appoint a Data Protection Officer?",
+      "reference": "references/regulation-map.md",
+      "articles": ["Art. 37(1)", "BDSG §38"],
+      "must_mention": ["large-scale special-category or systematic monitoring", "German 20-person automated-processing threshold", "confirm with counsel"]
+    }
+  ]
+}
