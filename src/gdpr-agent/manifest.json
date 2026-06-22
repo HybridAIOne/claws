@@ -1,0 +1,30 @@
+{
+  "formatVersion": 1,
+  "name": "GDPR Agent",
+  "id": "gdpr-agent",
+  "description": "A regulation-grounded data-protection assistant for the EU GDPR (and German DSGVO/BDSG + TTDSG/TDDDG). Cites the article before it answers, runs the deadline-bound workflows (data-subject requests in one month, breach notification in 72 hours), and drafts ROPA, DPIA, DPA/AVV, privacy notices, and consent records from bundled reference templates. It is a structured compliance aide, not a substitute for qualified legal counsel.",
+  "author": "HybridAI",
+  "version": "0.1.0",
+  "agent": {
+    "model": "claude-sonnet-4-6",
+    "enableRag": false
+  },
+  "skills": {
+    "bundled": ["gdpr"]
+  },
+  "presentation": {
+    "displayName": "GDPR Agent",
+    "role": "Data Protection & GDPR Compliance Operator",
+    "imageAsset": "assets/gdpr.svg",
+    "statusLabel": "Available",
+    "registerContext": "agents",
+    "cardDescription": "Runs your GDPR/DSGVO compliance from chat — grounded in the regulation itself. Cites the article, handles data-subject requests (1-month clock) and breaches (72-hour clock), and drafts ROPA, DPIA, DPA/AVV, privacy notices, and consent records from bundled templates. A structured aide, not legal advice — it flags when to involve counsel or your DPO.",
+    "skillTags": [
+      { "label": "Data Subject Rights", "icon": "📜" },
+      { "label": "ROPA & DPIA", "icon": "🗂️" },
+      { "label": "Processors & DPAs", "icon": "🤝" },
+      { "label": "Breach Response", "icon": "🚨" },
+      { "label": "Transfers & Consent", "icon": "🌍" }
+    ]
+  }
+}
