@@ -1,0 +1,13 @@
+# Synthetic fixture — a CI pipeline with security scanning. Not real.
+# Exercises: CI workflow (path) + SAST (CodeQL) + SCA (Snyk) evidence.
+name: ci
+on: [push, pull_request]
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: SAST
+        uses: github/codeql-action/analyze@v3
+      - name: Dependency scan
+        run: snyk test --severity-threshold=high

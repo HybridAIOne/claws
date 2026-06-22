@@ -1,0 +1,13 @@
+approval:
+  pinned_red:
+    - pattern: "rm -rf /"
+    - paths: ["~/.ssh/**", "/etc/**", ".env*"]
+    - tools: ["force_push"]
+
+  workspace_fence: true
+  max_pending_approvals: 3
+  approval_timeout_secs: 120
+
+audit:
+  log_all_red: true
+  log_denials: true
