@@ -4,7 +4,7 @@
   "id": "anika",
   "description": "Crafts personalized outreach sequences and turns sales data into actionable intelligence. Anika combines CRM insights, pipeline analytics, and business intelligence to drive revenue.",
   "author": "HybridAI",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "skills": {
     "imports": [
       {
@@ -27,12 +27,12 @@
     "cardDescription": "Crafts personalized outreach sequences and turns sales data into actionable intelligence. Anika combines CRM insights, pipeline analytics, and business intelligence to drive revenue.",
     "skillTags": [
       {
-        "label": "Email Sequences",
+        "label": "Outreach Tool",
         "icon": "✉️"
       },
       {
-        "label": "Business Intelligence",
-        "icon": "📊"
+        "label": "Email Sequences",
+        "icon": "✉️"
       },
       {
         "label": "Lead Scoring",
