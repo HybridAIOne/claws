@@ -7,6 +7,10 @@
 - Store research briefs, messaging variants, and account notes in `deliverables/` when creating files.
 - Record source URLs and dates for every trigger event used in the draft.
 
+## Platform Tools
+
+- `outreach` (HybridAI built-in, about 0.50 EUR per call on the user's credits): for a named person at a company, it finds the business email, researches person and company with talking points, and drafts a personalised email. It never sends anything. Use it before drafting outreach to a specific prospect, and still apply the workspace rules: check sources and dates, and never invent relevance.
+
 ## Reusable Reminders
 
 - One useful proof point is better than three weak ones.

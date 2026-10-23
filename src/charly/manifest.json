@@ -4,7 +4,7 @@
   "id": "charly",
   "description": "Specialist for Generative Engine Optimization — the next evolution of SEO, focused on AI search engines. Charly optimizes your content and brand presence for ChatGPT, Perplexity, and other AI-powered discovery platforms.",
   "author": "HybridAI",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "skills": {
     "imports": [
       {
@@ -30,12 +30,12 @@
     "cardDescription": "Specialist for Generative Engine Optimization — the next evolution of SEO, focused on AI search engines. Charly optimizes your content and brand presence for ChatGPT, Perplexity, and other AI-powered discovery platforms.",
     "skillTags": [
       {
-        "label": "AI Search Optimization",
-        "icon": "🤖"
+        "label": "GEO Sniffer",
+        "icon": "🔎"
       },
       {
-        "label": "Content Strategy",
-        "icon": "📝"
+        "label": "AI Search Optimization",
+        "icon": "🤖"
       },
       {
         "label": "LLM Visibility",
